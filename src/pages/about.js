@@ -5,11 +5,14 @@ import "../styles/styles.scss"
 import Header from "../components/header"
 import Hero from "../components/hero"
 
-const IndexPage = () => (
+const AboutPage = () => (
   <div>
     <Header/>
-    <Hero/>
+    <div className="container">
+      {/* <h1>Sup nerds</h1> */}
+      <p>Jezza stinky</p>
+    </div>
   </div>
 )
 
-export default IndexPage
+export default AboutPage
