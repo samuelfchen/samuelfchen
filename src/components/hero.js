@@ -21,7 +21,7 @@ const Hero = () => (
                 </div>
 
                 <div className="image-art">
-                    placeholder for images
+                    <ImageArt/>
                 </div>
             </div>
         </div>

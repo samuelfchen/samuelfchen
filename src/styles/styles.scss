@@ -7,31 +7,30 @@ $maroon: #83333e;
 $off-white: #f2f4f5;
 
 // Window widths
-$mobile: 650px;
-$tablet: 875px;
-$desktop-medium: 1024px;
-$desktop-large: 1600px;
+$tablet: 1000px;
+$desktop-medium: 1600px;
+$desktop-large: 2000px;
 
 @mixin mobile {
-    @media (max-width: $tablet) {
+    @media screen and (max-width: $tablet) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media (min-width: $tablet) and (max-width: $desktop-medium){
+    @media screen and (min-width: $tablet) and (max-width: $desktop-medium){
         @content;
     }
 }
 
 @mixin desktop-medium {
-    @media (min-width: $desktop-medium) and (max-width: $desktop-large){
+    @media screen and (min-width: $desktop-medium) and (max-width: $desktop-large){
         @content;
     }
 }
 
 @mixin desktop-large {
-    @media (min-width: $desktop-large) {
+    @media screen and (min-width: $desktop-large) {
         @content;
     }
 }
@@ -144,3 +143,128 @@ header {
         }
     }
 }
+
+// Image Art
+.image-art {
+    margin: 10px;
+}
+
+@mixin draw-image-art($d-const) {
+    .image-art {
+        // background-color: pink;
+        .images {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            width: $d-const;
+            height: $d-const / 2;
+    
+            .image {
+                display: relative;
+                border: 1px solid; 
+                align-self: baseline;
+            }
+    
+            .left-image {
+                flex: 16.67%;
+                width: 1/6;
+                min-width: 1/6;
+                margin-right: $d-const / 12;
+            }
+    
+            .left-image:after {
+                background-color: black;
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                bottom: 2px;
+                width: $d-const / 12;
+                left: $d-const / 6 + 1;
+            }
+    
+            .center-image:before {
+                $bot: 226;
+                $wid: 151;
+                $lef: 0;
+    
+                background-color: black;
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                bottom: $d-const / 600 * $bot;
+                width: $d-const / 600 * $wid;
+                left: $d-const / 600 * $lef;
+                transform: skewY(-44.25deg);
+            }
+    
+            .center-image {
+                flex: 50%;
+                width: 3/6;
+                min-width: 3/6;
+            }
+    
+            .center-image:after {
+                $bot: 75;
+                $wid: 151;
+                $lef: 448;
+    
+                background-color: black;
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                bottom: $d-const / 600 * $bot;
+                width: $d-const / 600 * $wid;
+                left: $d-const / 600 * $lef;
+                transform: skewY(-44.25deg);
+            }
+    
+            .right-image {
+                flex: 16.67%;
+                width: 1/6;
+                min-width: 1/6;
+                margin-left: $d-const / 12;
+                align-self: flex-start;
+            }
+    
+            .right-image:after {
+                background-color: black;
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                bottom: $d-const / 2 - 1;
+                width: $d-const / 12;
+                left: $d-const * 3/4 - 1;
+            }
+        }
+        .caption {
+            p {
+                text-align: center;
+                font-style: bold; 
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .image-art {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1300px) {
+    @include draw-image-art($d-const: 300px)
+}
+
+@media (min-width: 1300px) and (max-width: 2000px) {
+    @include draw-image-art($d-const: 600px)
+}
+
+@media (min-width: 2000px){
+    @include draw-image-art($d-const: 900px)
+}
+
