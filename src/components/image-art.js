@@ -29,6 +29,7 @@ const ImageArt = () => {
             }
         }
     `)
+    
     return (
         <div className="image-art">
             <div className="images">

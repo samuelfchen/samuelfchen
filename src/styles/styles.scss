@@ -8,8 +8,8 @@ $off-white: #f2f4f5;
 
 // Window widths
 $tablet: 1000px;
-$desktop-medium: 1600px;
-$desktop-large: 2000px;
+$desktop-medium: 1300px;
+$desktop-large: 1600px;
 
 @mixin mobile {
     @media screen and (max-width: $tablet) {
@@ -256,11 +256,15 @@ header {
     }
 }
 
-@media (min-width: 600px) and (max-width: 1300px) {
+@media (min-width: 600px) and (max-width: 1100px) {
     @include draw-image-art($d-const: 300px)
 }
 
-@media (min-width: 1300px) and (max-width: 2000px) {
+@media (min-width: 1100px) and (max-width: 1400px) {
+    @include draw-image-art($d-const: 450px)
+}
+
+@media (min-width: 1400px) and (max-width: 2000px) {
     @include draw-image-art($d-const: 600px)
 }
 
