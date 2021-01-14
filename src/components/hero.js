@@ -15,40 +15,76 @@ const Hero = () => {
         TweenMax.from(
             nameItem,
             .8,
-            { 
-                autoAlpha: 0,
+            {
+                opacity: 0,
                 y: 40,
+                delay: 0.5
+            }
+        )
+        TweenMax.to(
+            nameItem,
+            .8,
+            { 
+                opacity: 1,
                 ease: Power3.easeIn(),
                 delay: 0.5
             }
         )
+        
         TweenMax.from(
             titleItem,
-            .6,
+            .8, 
+            {
+                opacity: 0,
+                y: 30,
+                delay: 0.7
+            }
+        )
+        TweenMax.to(
+            titleItem,
+            .8,
             { 
-                autoAlpha: 0,
-                y: 20,
+                opacity: 1,
                 ease: Power3.easeIn(),
                 delay: .7
             }
         )
+
+
         TweenMax.from(
             iconItem,
             0.8,
             { 
-                autoAlpha: 0,
+                opacity: 0,
                 y: 20,
+                delay: 0.9
+            }
+        )
+        TweenMax.to(
+            iconItem,
+            0.8,
+            { 
+                opacity: 1,
                 ease: Power3.easeIn(),
                 delay: 0.9
             }
         )
+        
         TweenMax.from(
             imageItem,
-            1.7,
+            1.2,
             { 
-                autoAlpha: 0,
+                opacity: 0,
+                delay: 1
+            }
+        )
+        TweenMax.to(
+            imageItem,
+            1.2,
+            { 
+                opacity: 1,
                 ease: Power3.easeIn(),
-                delay: 0.5
+                delay: 1
             }
         )
     })
@@ -66,12 +102,12 @@ const Hero = () => {
                             <p>bachelor of adv. <br className="rwd-break"/>computing @ usyd</p>
                         </div>
 
-                        <div ref={el => {iconItem = el}}>
+                        <div className="hero-icon-bar" ref={el => {iconItem = el}}>
                             <IconBar/>
                         </div>
                     </div>
 
-                    <div className="image-art" ref={el => {imageItem = el}}>
+                    <div className="hero-image-art" ref={el => {imageItem = el}}>
                         <ImageArt/>
                     </div>
                 </div>

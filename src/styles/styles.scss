@@ -124,17 +124,26 @@ header {
                 font-weight: 400;
                 letter-spacing: 0.2rem;
                 margin-bottom: -1.5rem;
+
+                opacity: 0;
             }
 
             .title {
                 font-size: 1.1rem;
                 letter-spacing: 0.15rem;
                 font-weight: 350;
+
+                opacity: 0;
             }   
-            
-            .icons {
-                
+        
+            .hero-icon-bar {
+                opacity: 0;
             }
+            
+        }
+        
+        .hero-image-art {
+            opacity: 0;
         }
     }
 }
