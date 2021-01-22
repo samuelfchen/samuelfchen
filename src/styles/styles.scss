@@ -125,7 +125,6 @@ header {
                 letter-spacing: 0.2rem;
                 margin-bottom: -1.5rem;
 
-                opacity: 0;
             }
 
             .title {
@@ -133,17 +132,14 @@ header {
                 letter-spacing: 0.15rem;
                 font-weight: 350;
 
-                opacity: 0;
             }   
         
             .hero-icon-bar {
-                opacity: 0;
             }
             
         }
         
         .hero-image-art {
-            opacity: 0;
         }
     }
 }
@@ -165,6 +161,7 @@ header {
                 height: 2rem;
             }
             span {
+                margin-top: -2px;
                 font-size: 0.55rem;
                 text-transform: lowercase;
                 opacity: 0;
@@ -182,6 +179,7 @@ header {
 
 @mixin draw-image-art($d-const) {
     .image-art {
+        position: relative;
         // background-color: pink;
         .images {
             display: flex;
@@ -190,6 +188,7 @@ header {
             position: relative;
             width: $d-const;
             height: $d-const / 2;
+            z-index: 0;
     
             .image {
                 display: relative;
@@ -204,55 +203,12 @@ header {
                 margin-right: $d-const / 12;
             }
     
-            .left-image:after {
-                background-color: black;
-                content: "";
-                display: block;
-                height: 1px;
-                position: absolute;
-                bottom: 2px;
-                width: $d-const / 12;
-                left: $d-const / 6 + 1;
-            }
-    
-            .center-image:before {
-                $bot: 226;
-                $wid: 151;
-                $lef: 0;
-    
-                background-color: black;
-                content: "";
-                display: block;
-                height: 1px;
-                position: absolute;
-                bottom: $d-const / 600 * $bot;
-                width: $d-const / 600 * $wid;
-                left: $d-const / 600 * $lef;
-                transform: skewY(-44.25deg);
-            }
-    
             .center-image {
                 flex: 50%;
                 width: 3/6;
                 min-width: 3/6;
             }
-    
-            .center-image:after {
-                $bot: 75;
-                $wid: 151;
-                $lef: 448;
-    
-                background-color: black;
-                content: "";
-                display: block;
-                height: 1px;
-                position: absolute;
-                bottom: $d-const / 600 * $bot;
-                width: $d-const / 600 * $wid;
-                left: $d-const / 600 * $lef;
-                transform: skewY(-44.25deg);
-            }
-    
+
             .right-image {
                 flex: 16.67%;
                 width: 1/6;
@@ -260,25 +216,71 @@ header {
                 margin-left: $d-const / 12;
                 align-self: flex-start;
             }
-    
-            .right-image:after {
-                background-color: black;
-                content: "";
-                display: block;
-                height: 1px;
-                position: absolute;
-                bottom: $d-const / 2 - 1;
-                width: $d-const / 12;
-                left: $d-const * 3/4 - 1;
-            }
+
         }
         .caption {
             p {
                 text-align: center;
-                font-style: bold; 
+                letter-spacing: 0.1rem; 
+                font-size: 0.75rem;
+            }
+        }
+        .lines {
+            // opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            svg {
+                width: $d-const;
+                height: $d-const / 2 - 1;
+
+                rect {
+                    fill: black;
+                }
+
+                .left-horizontal {
+                                      
+                    y: $d-const / 2 - 3;
+                    x: $d-const / 6 + 1;
+                    width: $d-const / 12;
+                    height: 1px;
+                }
+
+                .right-horizontal {
+                    y: 0;
+                    x: $d-const * 3/4 - 1;
+                    width: $d-const / 12;
+                    height: 1px;
+                }
+
+                .left-diagonal {
+                    $top:147;
+                    $wid: 151;
+                    $lef: 0;
+        
+                    height: 1px;
+                    y: $d-const / 600 * $top;
+                    width: $d-const / 600 * $wid;
+                    x: $d-const / 600 * $lef;
+                    transform: skewY(-44.25deg);
+                }
+
+                .right-diagonal {
+                    $top: 733;
+                    $wid: 151;
+                    $lef: 448;
+    
+                    height: 1px;
+                    y: $d-const / 600 * $top;
+                    width: $d-const / 600 * $wid;
+                    x: $d-const / 600 * $lef;
+                    transform: skewY(-44.25deg);
+                }
             }
         }
     }
+    
 }
 
 @media (max-width: 600px) {

@@ -2,91 +2,44 @@ import React, {useEffect, useRef} from "react"
 import IconBar from "./icon-bar.js"
 import ImageArt from "./image-art.js"
 
-import {TweenMax, Power3} from 'gsap'
+import {TweenLite, Power3, Elastic} from 'gsap'
 
 const Hero = () => {
     let nameItem = useRef(null);
     let titleItem = useRef(null);
     let iconItem = useRef(null);
     let imageItem = useRef(null);
-
     
     useEffect(() => {
-        TweenMax.from(
-            nameItem,
-            .8,
-            {
-                opacity: 0,
-                y: 40,
-                delay: 0.5
-            }
-        )
-        TweenMax.to(
-            nameItem,
-            .8,
-            { 
-                opacity: 1,
-                ease: Power3.easeIn(),
-                delay: 0.5
-            }
-        )
-        
-        TweenMax.from(
-            titleItem,
-            .8, 
-            {
-                opacity: 0,
-                y: 30,
-                delay: 0.7
-            }
-        )
-        TweenMax.to(
-            titleItem,
-            .8,
-            { 
-                opacity: 1,
-                ease: Power3.easeIn(),
-                delay: .7
-            }
-        )
-
-
-        TweenMax.from(
-            iconItem,
-            0.8,
-            { 
-                opacity: 0,
-                y: 20,
-                delay: 0.9
-            }
-        )
-        TweenMax.to(
-            iconItem,
-            0.8,
-            { 
-                opacity: 1,
-                ease: Power3.easeIn(),
-                delay: 0.9
-            }
-        )
-        
-        TweenMax.from(
-            imageItem,
-            1.2,
-            { 
-                opacity: 0,
-                delay: 1
-            }
-        )
-        TweenMax.to(
-            imageItem,
-            1.2,
-            { 
-                opacity: 1,
-                ease: Power3.easeIn(),
-                delay: 1
-            }
-        )
+        TweenLite.fromTo(nameItem, 0.8, {
+            y: 40,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1
+        })
+        TweenLite.fromTo(titleItem, 1, {
+            y: 40,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            delay: 0.2
+        })
+        TweenLite.fromTo(iconItem, 1.2, {
+            y: 40,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            delay: 0.4
+        })
+        TweenLite.fromTo(imageItem, 1, {
+            opacity: 0
+        }, {
+            opacity: 1,
+            delay: 1
+        })
     })
 
     return (
