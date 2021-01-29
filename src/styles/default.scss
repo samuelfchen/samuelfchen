@@ -1,0 +1,56 @@
+// Defaults
+@import 'reset';
+
+$font: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+// Window widths
+$tablet: 1000px;
+$desktop-medium: 1300px;
+$desktop-large: 1600px;
+
+@mixin mobile {
+    @media screen and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet) and (max-width: $desktop-medium){
+        @content;
+    }
+}
+
+@mixin desktop-medium {
+    @media screen and (min-width: $desktop-medium) and (max-width: $desktop-large){
+        @content;
+    }
+}
+
+@mixin desktop-large {
+    @media screen and (min-width: $desktop-large) {
+        @content;
+    }
+}
+
+html, body {
+    font-family: $font;
+    font-size: 20px;
+    
+    @include tablet {
+        font-size: 18px;
+    }
+    @include mobile {
+        font-size: 18px;
+    }
+}
+
+.container {
+    // background-color: pink;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.content {
+    min-height: calc(100vh - 81px);
+    // background-color: pink;
+}

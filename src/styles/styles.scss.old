@@ -304,4 +304,3 @@ header {
 @media (min-width: 2000px){
     @include draw-image-art($d-const: 900px)
 }
-

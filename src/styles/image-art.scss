@@ -1,0 +1,134 @@
+@import 'default';
+
+// Image Art
+.image-art {
+    margin: 10px;
+}
+
+@mixin draw-image-art($d-const) {
+    .image-art {
+        position: relative;
+        // background-color: pink;
+        .images {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            width: $d-const;
+            height: $d-const / 2;
+            z-index: 5;
+    
+            .image {
+                display: relative;
+                border: 1px solid; 
+                align-self: baseline;
+            }
+    
+            .left-image {
+                flex: 16.67%;
+                width: 1/6;
+                min-width: 1/6;
+                margin-right: $d-const / 12;
+            }
+    
+            .center-image {
+                flex: 50%;
+                width: 3/6;
+                min-width: 3/6;
+            }
+
+            .right-image {
+                flex: 16.67%;
+                width: 1/6;
+                min-width: 1/6;
+                margin-left: $d-const / 12;
+                align-self: flex-start;
+            }
+
+        }
+        .caption {
+            p {
+                text-align: center;
+                letter-spacing: 0.1rem; 
+                font-size: 0.75rem;
+                margin-top: 0.5rem;
+            }
+        }
+        .lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            svg {
+                width: $d-const;
+                height: $d-const / 2 - 1;
+
+                rect {
+                    fill: black;
+                }
+
+                .left-horizontal {
+                                      
+                    y: $d-const / 2 - 3;
+                    x: $d-const / 6 + 1;
+                    width: $d-const / 12;
+                    height: 1px;
+                }
+
+                .right-horizontal {
+                    y: 0;
+                    x: $d-const * 3/4 - 1;
+                    width: $d-const / 12;
+                    height: 1px;
+                }
+
+                .left-diagonal {
+                    $top:147;
+                    $wid: 151;
+                    $lef: 0;
+        
+                    height: 1px;
+                    y: $d-const / 600 * $top;
+                    width: $d-const / 600 * $wid;
+                    x: $d-const / 600 * $lef;
+                    transform: skewY(-44.25deg);
+                }
+
+                .right-diagonal {
+                    $top: 734;
+                    $wid: 151;
+                    $lef: 449;
+    
+                    height: 1px;
+                    y: $d-const / 600 * $top;
+                    width: $d-const / 600 * $wid;
+                    x: $d-const / 600 * $lef;
+                    transform: skewY(-44.25deg);
+                }
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .image-art {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1100px) {
+    @include draw-image-art($d-const: 300px)
+}
+
+@media (min-width: 1100px) and (max-width: 1400px) {
+    @include draw-image-art($d-const: 450px)
+}
+
+@media (min-width: 1400px) and (max-width: 2000px) {
+    @include draw-image-art($d-const: 600px)
+}
+
+@media (min-width: 2000px){
+    @include draw-image-art($d-const: 900px)
+}

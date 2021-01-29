@@ -3,6 +3,9 @@ import Img from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import gsap, {TweenMax, Power3} from 'gsap'
 
+import "../styles/default.scss"
+import "../styles/icon-bar.scss"
+
 import githubIcon from "../images/icons/github-icon.svg"
 import linkedinIcon from "../images/icons/linkedin-icon.svg"
 import emailIcon from "../images/icons/email-icon.svg"

@@ -1,0 +1,29 @@
+@import 'default';
+
+// Icon bar
+.icon-bar {
+    width: 12.5rem;
+    .icons {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1.5rem;
+        flex-direction: row;
+        .icon {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+            span {
+                margin-top: -2px;
+                font-size: 0.55rem;
+                text-transform: lowercase;
+                opacity: 0;
+            }
+        }
+        
+    }
+    
+}

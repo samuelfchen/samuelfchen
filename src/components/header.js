@@ -1,48 +1,35 @@
 import { Link } from "gatsby"
 import React from "react"
+import PropTypes from "prop-types"
 
-import TransitionLink from 'gatsby-plugin-transition-link';
-import {TweenLite, Power3, Elastic} from 'gsap'
+import "../styles/header.scss"
 
-
-
-const Header = () => {
-
+const Header = ({ siteTitle }) => {
   return (
-    <header>
-      <div className="container">
-        <div className="inner-header">
-          <div className="logo">
-            <Link to="/">sc</Link>
+    <div className="container">
+      <header>
+        <div className="logo">
+            <Link to="/" activeClassName="active">sc</Link>
           </div>
-  
+
           <div className="navigation">
             <nav>
-              <Link to="/photo">photography</Link>
-              <Link to="/projects">projects</Link>
-              <Link to="/about">about</Link>
-              <TransitionLink
-                to="/about"
-                exit={{
-                  trigger: ({ exit, node }) => {
-                    var main = node.getElementsByClassName("main");
-                  
-                    TweenLite.to(main, 3, {opacity: 0});
-                  },
-                  length: 1
-                }}
-                entry={{
-                  delay: 0.6
-                }}
-              >
-                Go to page 2
-              </TransitionLink>
+              <Link to="/photo" activeClassName="active">photography</Link>
+              <Link to="/projects" activeClassName="active">projects</Link>
+              <Link to="/about" activeClassName="active">about</Link>
             </nav>
           </div>
-        </div>
-      </div>
-    </header>
+      </header>
+    </div>
   )
+}
+
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Header.defaultProps = {
+  siteTitle: ``,
 }
 
 export default Header

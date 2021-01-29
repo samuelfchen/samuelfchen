@@ -1,7 +1,10 @@
 import React, {useRef, useEffect} from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import {TweenLite, Power3, Elastic} from 'gsap'
+import {TweenLite} from 'gsap'
+
+import "../styles/default.scss"
+import "../styles/image-art.scss"
 
 const ImageArt = () => {
     const data = useStaticQuery(graphql`
@@ -89,6 +92,7 @@ const ImageArt = () => {
                         </div>
                     </div>
                 </Link>
+                
                 <div className="caption" ref={el => {captionItem = el}}>
                     <p>"doggo" - 2020</p>
                 </div>
