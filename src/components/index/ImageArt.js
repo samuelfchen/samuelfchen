@@ -66,9 +66,10 @@ const ImageArt = (props) => {
             setState(windowProps);
         }
 
-        window.addEventListener('resize', updateWindowDimensions, { passive: true });
-        window.addEventListener('load', updateWindowDimensions, { passive: true });
+        // Run once on page load
+        updateWindowDimensions();
 
+        window.addEventListener('resize', updateWindowDimensions, { passive: true });
 
         return () => {
             window.removeEventListener('resize', updateWindowDimensions);
