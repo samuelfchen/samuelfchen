@@ -1,27 +1,27 @@
-@import 'default';
+import styled from 'styled-components';
 
-.hero {
+const HeroWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     position: fixed;
-    height: 300px;
-    width: 90vw;
-    top: 50%;
-    margin-top: -150px;
+    height: 100vh;
+    width: 80vw;
+    top: 0;
     // background-color: pink;
     align-items: center;
 
     .description {
         text-transform: uppercase;
         
-        line-height: 1rem;
+        // line-height: 1rem;
+        // display: inline-block;
 
         white-space: nowrap;
         .rwd-break {
             display: none;
         }
 
-        @include mobile {
+        @media screen and (max-width: 1000px) {
             .rwd-break {
                 display: block;
             }
@@ -30,10 +30,9 @@
         .name {
             line-height: 2.5rem;
             font-size: 2.5rem;
-            font-weight: 400;
+            // font-weight: 400;
             letter-spacing: 0.2rem;
             margin-bottom: 1rem;
-
         }
 
         .title {
@@ -41,15 +40,8 @@
             letter-spacing: 0.15rem;
             font-weight: 350;
             margin-bottom: 1rem;
-
-        }   
-    
-        .hero-icon-bar {
         }
-        
     }
-    
-    .hero-image-art {
-    }
-}
+`
 
+export default HeroWrapper;

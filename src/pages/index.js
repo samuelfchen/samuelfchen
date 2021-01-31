@@ -1,15 +1,14 @@
 import React from "react"
-import "../styles/default.scss"
+// import "../styles/default.scss"
 
 //Import component
-import Layout from "./components/layout.js"
-import Hero from "../components/hero"
+import Layout from "../templates/Layout.js"
+import Hero from "../components/index/Hero.js"
 
 const IndexPage = () => (
-  <div className="content">
+  <Layout>
     <Hero/>
-  </div>
-  
+  </Layout>
 )
 
 export default IndexPage

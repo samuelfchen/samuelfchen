@@ -1,0 +1,55 @@
+// @import 'default';
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    height: 300px;
+    width: 90vw;
+    top: 50%;
+    margin-top: -150px;
+    // background-color: pink;
+    align-items: center;
+
+    .description {
+        text-transform: uppercase;
+        
+        line-height: 1rem;
+
+        white-space: nowrap;
+        .rwd-break {
+            display: none;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .rwd-break {
+                display: block;
+            }
+        }
+
+        .name {
+            line-height: 2.5rem;
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.2rem;
+            margin-bottom: 1rem;
+
+        }
+
+        .title {
+            font-size: 1.1rem;
+            letter-spacing: 0.15rem;
+            font-weight: 350;
+            margin-bottom: 1rem;
+
+        }   
+    
+        .hero-icon-bar {
+        }
+        
+    }
+    
+    .hero-image-art {
+    }
+}
+

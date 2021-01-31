@@ -1,12 +1,12 @@
-import React, {useRef, useEffect} from "react"
+import React, {useRef, useEffect, useState} from "react"
+import throttle from 'lodash';
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import {TweenLite} from 'gsap'
 
-import "../styles/default.scss"
-import "../styles/image-art.scss"
+import ImageArtWrapper from '../../styles/index/ImageArtStyles'
 
-const ImageArt = () => {
+const ImageArt = (props) => {
     const data = useStaticQuery(graphql`
         query {
             left: file(relativePath: { eq: "albums/dog/left.jpg" }) {
@@ -45,40 +45,42 @@ const ImageArt = () => {
     let rightDiagonal = useRef(null);
 
 
-    // useEffect(
-    //     () => {
-    //         TweenLite.fromTo(leftItem, 0.8, {
-    //             x: -15,
-    //             opacity: 0
-    //         }, {
-    //             x: 0,
-    //             opacity: 1,
-    //             delay: 0.2
-    //         })
-    //         TweenLite.fromTo(rightItem, 0.8, {
-    //             x: 15,
-    //             opacity: 0
-    //         }, {
-    //             x: 0,
-    //             opacity: 1,
-    //             delay: 0.2
-    //         })
-    //         TweenLite.fromTo(centerItem, 0.8, {
-    //             // x: 20,
-    //             opacity: 0
-    //         }, {
-    //             x: 0,
-    //             opacity: 1,
-    //             delay: 0.2
-    //         })
-    //         TweenLite.to(leftHorizontal, 3, {drawSVG: "0%"})
-    //     }
-    // )
-    
+    // Window Width handling
+    const [ windowProps, setState ] = useState({ width: 0, displayWidth: 0, isMobile: 0 });
+
+    useEffect(() => {
+        const updateWindowDimensions = () => {
+            const windowProps = { width: 0, displayWidth: 0, isMobile: 0 };
+            windowProps.width = window.innerWidth;
+            
+            const availableWidth = window.innerWidth * 0.6 / 2;
+            const maxWidth = availableWidth - (availableWidth % 100);
+            const availableHeight = window.innerHeight - 200;
+            const maxHeight = availableHeight - (availableHeight % 50);
+            
+
+            // If not enough height, width is maxHeight * 2, else width is maxWidth
+            windowProps.displayWidth = (maxWidth > maxHeight * 2) ? maxHeight * 2 : maxWidth;
+
+            windowProps.isMobile = windowProps.displayWidth < 400;
+            setState(windowProps);
+        }
+
+        window.addEventListener('resize', updateWindowDimensions, { passive: true });
+        window.addEventListener('load', updateWindowDimensions, { passive: true });
+
+
+        return () => {
+            window.removeEventListener('resize', updateWindowDimensions);
+        }
+    }, [ windowProps ]);
+
 
     return (
-        <div>
-            <div className="image-art">
+        <>
+            { console.log("Display width: " + windowProps) } 
+
+            <ImageArtWrapper width={windowProps.displayWidth} mobile={windowProps.isMobile || 0}>
                 <Link to="/photo" target="_blank">
                     <div className="images">
                         <div className="image left-image" ref={el => {leftItem = el}}>
@@ -105,9 +107,8 @@ const ImageArt = () => {
                         <rect className="right-diagonal" ref={el => {leftHorizontal = el}}/>
                     </svg>
                 </div>
-            </div>
-            
-        </div>
+            </ImageArtWrapper>
+        </>
     )
 }
 

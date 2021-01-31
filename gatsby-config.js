@@ -3,6 +3,7 @@ module.exports = {
     title: `Samuel Chen`,
   },
   plugins: [
+    // File system
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -10,6 +11,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // Manifest
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,10 +29,25 @@ module.exports = {
         ]
       },
     },
+    // Remark transformer
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // Plugins configs
+        plugins: [],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`
   ],
 }
