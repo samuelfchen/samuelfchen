@@ -16,7 +16,7 @@ const HeroWrapper = styled.div`
         
         .description {
             text-transform: uppercase;
-            opacity: 0;
+            opacity: 0; 
 
             // line-height: 1rem;
             // display: inline-block;
