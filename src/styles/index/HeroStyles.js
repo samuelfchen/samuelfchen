@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-    position: default;
     height: calc(100vh);
     width: 80vw;
     margin-left: 10vw;
