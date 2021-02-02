@@ -79,7 +79,6 @@ const ImageArt = (props) => {
 
     return (
         <>
-            { console.log("Display width: " + windowProps) } 
 
             <ImageArtWrapper width={windowProps.displayWidth} mobile={windowProps.isMobile || 0}>
                 <Link to="/photo" target="_blank">
