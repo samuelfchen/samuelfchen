@@ -4,14 +4,14 @@ const typography = new Typography({
   baseFontSize: '20px',
   baseLineHeight: '0',
   headerFontFamily: ['Montserrat', 'sans-serif'],
-  bodyFontFamily: ['Open Sans', 'sans-serif'],
+  bodyFontFamily: ['Montserrat', 'sans-serif'],
   googleFonts: [
     {
       name: 'Montserrat',
       styles: ['800', '400'],
     },
     {
-      name: 'Open Sans',
+      name: 'Montserrat',
       styles: ['400', '300', '200'],
     },
   ],

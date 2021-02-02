@@ -13,19 +13,27 @@ const HeaderWrapper = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // font-weight: bold;
 
     // Shadow when scrolled
     box-shadow: ${props => (props.isScrolled ? '0px 0px 10px #4d4d4d' : 'none')};
 
 
     .logo {
+        // background-color: pink;
+        margin-left: 10vw;
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+
         a {
-            font-weight: 400;
-            font-size: 1.5rem;
-            color: black;
             text-decoration: none;
-            letter-spacing: 1.5px;
-            margin-left: 10vw;
+            color: black;
+            // font-weight: 400;
+            font-size: 1.5rem;
+            // text-align: center;
+            letter-spacing: 0.2rem;
         }
         .active {
             pointer-events: none;

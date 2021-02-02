@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 const ImageArtWrapper = styled.div`
-    margin: 10px;
     position: relative;
     // background-color: pink;
-    // min-width: ${props => props.width}px;
 
     opacity: ${props => props.mobile ? 0 : 1};
 
@@ -15,7 +13,7 @@ const ImageArtWrapper = styled.div`
         position: relative;
         width: ${props => props.width}px;
         height: ${props => props.width / 2}px;
-        z-index: 5;
+        z-index: 2;
 
         .image {
             display: relative;

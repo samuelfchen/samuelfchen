@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import HeaderWrapper from '../../styles/layout/HeaderStyles'
 
+import LogoSVG from '../../images/logos/SigniatureLogoSVG'
 
 const Header = () => {
   let [isScrolled, setIsScrolled] = useState(false);
@@ -23,14 +24,19 @@ const Header = () => {
   return (
     <HeaderWrapper isScrolled={isScrolled}>
       <div className="logo">
-        <Link to="/" activeClassName="active">sc</Link>
+        <Link to="/" activeClassName="active">
+          {/* <LogoSVG/>
+          <p>samuel chen</p> */}
+          sc
+        </Link>
       </div>
 
       <div className="navigation">
         <nav>
           <Link to="/photo" activeClassName="active">photography</Link>
-          <Link to="/projects" activeClassName="active">projects</Link>
-          <Link to="/about" activeClassName="active">about</Link>
+          <Link to="/blog" activeClassName="active">blog</Link>
+          {/* <Link to="/projects" activeClassName="active">projects</Link> */}
+          {/* <Link to="/about" activeClassName="active">about</Link> */}
         </nav>
       </div>
     </HeaderWrapper>

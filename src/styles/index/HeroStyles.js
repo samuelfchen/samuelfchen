@@ -1,45 +1,68 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    height: 100vh;
+    position: default;
+    height: calc(100vh);
     width: 80vw;
-    top: 0;
-    // background-color: pink;
-    align-items: center;
+    margin-left: 10vw;
+    // background-color: green;
+    overflow: auto;
 
-    .description {
-        text-transform: uppercase;
+
+    .hero-content {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         
-        // line-height: 1rem;
-        // display: inline-block;
+        .description {
+            text-transform: uppercase;
+            opacity: 0;
 
-        white-space: nowrap;
-        .rwd-break {
-            display: none;
-        }
+            // line-height: 1rem;
+            // display: inline-block;
 
-        @media screen and (max-width: 1000px) {
+            white-space: nowrap;
             .rwd-break {
-                display: block;
+                display: none;
+            }
+
+            @media screen and (max-width: 1000px) {
+                .rwd-break {
+                    display: block;
+                }
+            }
+
+            .name {
+                line-height: 2.5rem;
+                font-size: 2.5rem;
+                font-weight: 400;
+                letter-spacing: 0.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+                letter-spacing: 0.15rem;
+                font-weight: 350;
+                margin-bottom: 1rem;
             }
         }
 
-        .name {
-            line-height: 2.5rem;
-            font-size: 2.5rem;
-            // font-weight: 400;
-            letter-spacing: 0.2rem;
-            margin-bottom: 1rem;
+        .hero-image-art {
+            opacity: 0;
         }
+    }
 
-        .title {
-            font-size: 1.1rem;
-            letter-spacing: 0.15rem;
-            font-weight: 350;
-            margin-bottom: 1rem;
+    .arrow-down{
+        width: 80vw;
+        display: flex;
+        margin-top: -80px;
+        // background-color: red;
+
+        img {
+            width: 80px;
+            margin: auto;
         }
     }
 `

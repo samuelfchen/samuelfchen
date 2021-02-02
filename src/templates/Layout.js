@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import Header from "../components/layout/Header.js"
+import Footer from "../components/layout/Footer"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -36,6 +37,8 @@ const Layout = ({ children }) => {
         <main>
           {children}
         </main>
+
+        <Footer/>
       </LayoutWrapper>
     </>
   )
