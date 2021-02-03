@@ -46,41 +46,48 @@ const ImageArt = (props) => {
 
 
     // Window Width handling
-    const [ windowProps, setState ] = useState({ width: 0, displayWidth: 0, isMobile: 0 });
+    const [ dimensions, setState ] = useState({ 
+        width: window.innerWidth, 
+        height: window.innerHeight
+    });
 
-    useEffect(() => {
+    // Run once on page load
+    useEffect(() => {        
         const updateWindowDimensions = () => {
-            const windowProps = { width: 0, displayWidth: 0, isMobile: 0 };
-            windowProps.width = window.innerWidth;
-            
-            const availableWidth = window.innerWidth * 0.6 / 2;
-            const maxWidth = availableWidth - (availableWidth % 100);
-            const availableHeight = window.innerHeight - 200;
-            const maxHeight = availableHeight - (availableHeight % 50);
-            
-
-            // If not enough height, width is maxHeight * 2, else width is maxWidth
-            windowProps.displayWidth = (maxWidth > maxHeight * 2) ? maxHeight * 2 : maxWidth;
-
-            windowProps.isMobile = windowProps.displayWidth < 400;
-            setState(windowProps);
+            setState({ 
+                width: window.innerWidth, 
+                height: window.innerHeight
+            });
         }
-
-        // Run once on page load
-        updateWindowDimensions();
 
         window.addEventListener('resize', updateWindowDimensions, { passive: true });
 
         return () => {
             window.removeEventListener('resize', updateWindowDimensions);
         }
-    }, [ windowProps ]);
+    }, [ dimensions ]);
+
+
+    const calculate = () => {
+        const windowProps = { width: 0, displayWidth: 0, isMobile: 0 };
+        windowProps.width = dimensions;
+        const availableWidth = window.innerWidth * 0.6 / 2;
+        const maxWidth = availableWidth - (availableWidth % 100);
+        const availableHeight = window.innerHeight - 200;
+        const maxHeight = availableHeight - (availableHeight % 50);
+
+        // If not enough height, width is maxHeight * 2, else width is maxWidth
+        windowProps.displayWidth = (maxWidth > maxHeight * 2) ? maxHeight * 2 : maxWidth;
+
+        windowProps.isMobile = windowProps.displayWidth < 400;
+
+        return windowProps;
+    }
 
 
     return (
         <>
-
-            <ImageArtWrapper width={windowProps.displayWidth} mobile={windowProps.isMobile || 0}>
+            <ImageArtWrapper width={calculate().displayWidth} mobile={calculate().isMobile}>
                 <Link to="/photo" target="_blank">
                     <div className="images">
                         <div className="image left-image" ref={el => {leftItem = el}}>
