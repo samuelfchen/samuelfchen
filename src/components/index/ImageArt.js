@@ -70,10 +70,10 @@ const ImageArt = (props) => {
 
     const calculate = () => {
         const windowProps = { width: 0, displayWidth: 0, isMobile: 0 };
-        windowProps.width = dimensions;
-        const availableWidth = window.innerWidth * 0.6 / 2;
+        windowProps.width = dimensions.width;
+        const availableWidth = dimensions.width * 0.6 / 2;
         const maxWidth = availableWidth - (availableWidth % 100);
-        const availableHeight = window.innerHeight - 200;
+        const availableHeight = dimensions.height - 200;
         const maxHeight = availableHeight - (availableHeight % 50);
 
         // If not enough height, width is maxHeight * 2, else width is maxWidth
