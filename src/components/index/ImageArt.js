@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from "react"
-import throttle from 'lodash';
+import {window} from 'browser-monads'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import {TweenLite} from 'gsap'

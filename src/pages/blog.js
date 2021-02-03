@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from 'gatsby'
 
 //Import component
 import Layout from "../templates/Layout.js"
