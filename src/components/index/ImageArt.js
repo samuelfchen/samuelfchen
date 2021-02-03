@@ -87,7 +87,7 @@ const ImageArt = (props) => {
 
     return (
         <>
-            <ImageArtWrapper width={calculate().displayWidth} mobile={calculate().isMobile}>
+            <ImageArtWrapper width={calculate().displayWidth} mobile={calculate().isMobile} dummy={dimensions.width}>
                 <Link to="/photo" target="_blank">
                     <div className="images">
                         <div className="image left-image" ref={el => {leftItem = el}}>
