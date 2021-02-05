@@ -68,10 +68,10 @@ const HeaderWrapper = styled.header`
     
         .mobile {
             a {
-                margin: 0 10px;
+                margin: 0 15px;
                 img {
-                    width: 35px;
-                    height: 35px;
+                    width: 30px;
+                    height: 30px;
                 }
 
                 &:last-child {
