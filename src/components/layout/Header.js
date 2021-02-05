@@ -5,6 +5,11 @@ import HeaderWrapper from '../../styles/layout/HeaderStyles'
 
 import LogoSVG from '../../images/logos/SigniatureLogoSVG'
 
+
+import blogIconURL from '../../images/icons/header/blog.svg'
+import photoIconURL from '../../images/icons/header/photo.svg'
+
+
 const Header = () => {
   let [isScrolled, setIsScrolled] = useState(false);
 
@@ -32,11 +37,15 @@ const Header = () => {
       </div>
 
       <div className="navigation">
-        <nav>
+        <nav className='desktop'>
           <Link to="/photo" activeClassName="active">photography</Link>
           <Link to="/blog" activeClassName="active">blog</Link>
           {/* <Link to="/projects" activeClassName="active">projects</Link> */}
           {/* <Link to="/about" activeClassName="active">about</Link> */}
+        </nav>
+        <nav className='mobile'>
+          <Link to="/photo"><img src={photoIconURL} alt='photo'/></Link>
+          <Link to="/blog"><img src={blogIconURL} alt='blog'/></Link>
         </nav>
       </div>
     </HeaderWrapper>

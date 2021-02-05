@@ -22,12 +22,12 @@ const Hero = () => {
             delay: 0.5
         })
 
-        TweenLite.fromTo(imageItem, 1, {
-            opacity: 0
-        }, {
-            opacity: 1,
-            delay: 1.5
-        })
+        // TweenLite.fromTo(imageItem, 1, {
+        //     opacity: 0
+        // }, {
+        //     opacity: 1,
+        //     delay: 1.5
+        // })
     })
 
     return (
@@ -47,9 +47,9 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className="hero-image-art" ref={el => {imageItem = el}}>
+                {/* <div className="hero-image-art" ref={el => {imageItem = el}}>
                     <ImageArt/>
-                </div>
+                </div> */}
             </div>
 
             <div className="arrow-down"> 
