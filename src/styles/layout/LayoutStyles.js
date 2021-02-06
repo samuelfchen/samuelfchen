@@ -18,6 +18,11 @@ const LayoutWrapper = styled.div`
         display: flex;
         flex-direction: column;
         
+        p {
+            // margin-top: 1em ;
+            margin-bottom: 1em ;
+        }
+        
         h1 {
             // text-transform: uppercase;
             line-height: 2rem;

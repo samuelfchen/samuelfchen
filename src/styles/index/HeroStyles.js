@@ -5,7 +5,7 @@ const HeroWrapper = styled.div`
     width: 80vw;
     margin-left: 10vw;
     // background-color: green;
-    overflow: hidden;
+    // overflow: hidden;
 
 
     .hero-content {

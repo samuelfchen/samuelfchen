@@ -1,10 +1,9 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+// in gastby-browser.js
+exports.shouldUpdateScroll = ({
+  routerProps: { location },
+  getSavedScrollPosition,
+}) => {
+  window.scrollTo(0, 0)
 
-// You can delete this file if you're not using it
-exports.shouldUpdateScroll = () => {
-    return false;
-  };
+  return false
+}
