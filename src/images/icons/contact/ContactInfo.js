@@ -14,7 +14,7 @@ export default [
     {
         icon: linkedinIcon,
         label: 'linkedin',
-        url: 'https://www.linkedin.com/in/samuel-chen-849b41177/'
+        url: 'https://www.linkedin.com/in/samuelfchen/'
     }, 
     {
         icon: emailIcon,
