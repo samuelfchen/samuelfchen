@@ -9,7 +9,7 @@ export default [
     {
         icon: githubIcon,
         label: 'github',
-        url: 'https://github.com/s-f-chen'
+        url: 'https://github.com/samuelfchen'
     }, 
     {
         icon: linkedinIcon,
