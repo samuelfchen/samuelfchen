@@ -15,13 +15,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               id
               frontmatter {
                 slug
-                featuredImage {
-                  childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
+                featuredImage
               }
             }
           }
@@ -42,6 +36,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         context: {
           // additional data can be passed via context
           slug: node.frontmatter.slug,
+          imgUrl: `blog/${node.frontmatter.featuredImage}`
         },
       })
     })

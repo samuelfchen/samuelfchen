@@ -10,17 +10,16 @@ export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { frontmatter, html, file } = markdownRemark
 
-  let featuredImgFluid = frontmatter.featuredImage.childImageSharp.fluid
+  let featuredImgFluid = data.file.childImageSharp.fluid
   return (
     <Layout>
       <BlogPostWrapper>
         <div className="blog-intro">
           <h1>{frontmatter.title}</h1>
-          <h3>{frontmatter.date}</h3>
-
           <h2>{frontmatter.subtitle}</h2>
+          <h5>{frontmatter.date}</h5>
           <Img fluid={featuredImgFluid} />
         </div>
 
@@ -34,7 +33,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query($slug: String!, $imgUrl: String) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -42,12 +41,13 @@ export const pageQuery = graphql`
         slug
         title
         subtitle
-        featuredImage {
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+      }
+    }
+
+    file (relativePath: { eq: $imgUrl }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

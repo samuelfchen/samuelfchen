@@ -1,5 +1,5 @@
 ---
-slug: "test"
+slug: "test2"
 title: "This is a title"
 subtitle: "This is a subtitle"
 featuredImage: "test.jpg"

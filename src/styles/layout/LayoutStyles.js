@@ -28,19 +28,28 @@ const LayoutWrapper = styled.div`
             line-height: 2rem;
             font-size: 2.5rem;
             font-weight: 400;
-            // letter-spacing: 0.1rem;
+            letter-spacing: 0.1rem;
             margin-bottom: 1rem;
         }
 
         h2 {
             font-size: 1.5rem;
-            // letter-spacing: 0.1rem;
+            letter-spacing: 0.05rem;
             font-weight: 400;
             margin-bottom: 1rem;
             margin-top: 1rem;
         }
 
         h3 {
+            font-size: 1.25rem;
+            letter-spacing: 0.05rem;
+
+            margin-bottom: 0.8rem;
+            margin-top: 0.8rem;
+            font-weight: 400;
+        }
+
+        h5 {
             font-size: 1rem;
             letter-spacing: 0.1rem;
             font-weight: 350;
