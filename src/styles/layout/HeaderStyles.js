@@ -50,7 +50,7 @@ const HeaderWrapper = styled.header`
                 letter-spacing: 1px;
                 margin: 0 20px;
                 color: black;
-                font-size: 0.75rem;
+                font-size: 0.85rem;
     
                 &:last-child {
                     margin-right: 10vw;

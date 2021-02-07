@@ -6,13 +6,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const result = await graphql(`
       {
         allMarkdownRemark(
+          filter: { frontmatter: {type: {eq: "blogPost" }}}
           sort: { order: DESC, fields: [frontmatter___date] }
           limit: 1000
         ) {
           edges {
             node {
+              id
               frontmatter {
                 slug
+                featuredImage {
+                  childImageSharp {
+                    fluid(maxWidth: 800) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
@@ -28,7 +37,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: node.frontmatter.slug,
+        path: "blog/" + node.frontmatter.slug,
         component: blogPostTemplate,
         context: {
           // additional data can be passed via context
