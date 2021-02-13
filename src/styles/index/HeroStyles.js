@@ -4,11 +4,13 @@ const HeroWrapper = styled.div`
     height: calc(100vh);
     width: 80vw;
     margin-left: 10vw;
+    margin-right: 10vw;
     // background-color: green;
-    // overflow: hidden;
-
+    overflow: hidden;
 
     .hero-content {
+        position: absolute
+        z-index: 10;
         height: 100%;
         display: flex;
         justify-content: space-between;
@@ -48,10 +50,23 @@ const HeroWrapper = styled.div`
             }
         }
 
-        .hero-image-art {
-            opacity: 0;
+        
+        
+    }
+
+    .hero-mesh{ 
+        z-index: 5;
+
+        position: absolute;
+        background-color: pink;
+        margin-top: -90vh;
+        right: 40vw;
+        
+        @media screen and (max-width: 600px) {
+            right: 50%;
         }
     }
+
 
     .arrow-down{
         width: 80vw;
