@@ -18,7 +18,7 @@ position: relative;
 
     stroke: #000;
 
-    opacity: 0;
+    // opacity: 0;
 
     stroke-dasharray: ${(props) => props.pathLength};
     stroke-dashoffset: ${(props) => props.pathLength};
@@ -27,11 +27,11 @@ position: relative;
 
   @keyframes draw {
     from {
-      opacity: 1;
+      // opacity: 1;
       stroke-dashoffset: ${(props) => props.pathLength};
     }
     to {
-      opacity: 1;
+      // opacity: 1;
       stroke-dashoffset: 0;
     }
   }
