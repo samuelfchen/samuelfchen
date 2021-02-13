@@ -31,6 +31,7 @@ position: relative;
       stroke-dashoffset: ${(props) => props.pathLength};
     }
     to {
+      opacity: 1;
       stroke-dashoffset: 0;
     }
   }
