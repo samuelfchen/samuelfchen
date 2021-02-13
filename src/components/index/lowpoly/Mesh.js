@@ -18,6 +18,8 @@ position: relative;
 
     stroke: #000;
 
+    opacity: 0;
+
     stroke-dasharray: ${(props) => props.pathLength};
     stroke-dashoffset: ${(props) => props.pathLength};
     animation: draw 20s ease-in forwards;
@@ -25,6 +27,7 @@ position: relative;
 
   @keyframes draw {
     from {
+      opacity: 1;
       stroke-dashoffset: ${(props) => props.pathLength};
     }
     to {
