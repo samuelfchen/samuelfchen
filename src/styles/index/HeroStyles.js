@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
     height: calc(100vh);
-    width: 80vw;
     margin-left: 10vw;
-    margin-right: 10vw;
     // background-color: green;
     overflow: hidden;
 
@@ -15,6 +13,8 @@ const HeroWrapper = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-direction: vertical;
+        // background-color: pink;        
         
         .description {
             text-transform: uppercase;
@@ -50,28 +50,52 @@ const HeroWrapper = styled.div`
             }
         }
 
-        
-        
-    }
+        .hero-mesh {
+            z-index: 5;
+            margin-right: 10vw;
+            // background-color: pink;
 
-    .hero-mesh{ 
-        z-index: 5;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
 
-        position: absolute;
-        background-color: pink;
-        margin-top: -90vh;
-        right: 40vw;
-        
+            height: 80vh;
+            width: 50vw;
+
+        }
         @media screen and (max-width: 600px) {
-            right: 50%;
+            .hero-mesh {
+                width: 50vw;
+                // position: absolute;
+                // right: -25vw;
+                // display: flex;
+                // left-margin: 30vw;
+                height: 90vh;
+                // background-color: pink;
+
+                margin-right: 0;
+                svg {
+                    // background-color: red;
+                }
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .hero-mesh {
+                display: none;
+            }
         }
     }
 
+    
+
 
     .arrow-down{
+        // position: absolute;
         width: 80vw;
         display: flex;
         margin-top: -80px;
+        // bottom: 0
         // background-color: red;
 
         img {

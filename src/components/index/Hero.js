@@ -6,7 +6,7 @@ import { TweenLite } from 'gsap'
 
 import HeroWrapper from '../../styles/index/HeroStyles'
 
-import Mesh from './lowpoly/Mesh'
+import Mesh from './Mesh'
 
 import down from '../../images/icons/down.svg'
 
@@ -49,16 +49,16 @@ const Hero = () => {
                     </div>
                 </div>
 
-                
+                <div className="hero-mesh">
+                    <Mesh/>
+                </div>
             </div>
             
             <div className="arrow-down"> 
                 <img src={down} alt="down arrow"/>
             </div>
 
-            <div className="hero-mesh">
-                <Mesh/>
-            </div>
+            
 
             
         </HeroWrapper>
