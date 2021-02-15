@@ -14,13 +14,15 @@ const HeroWrapper = styled.div`
         justify-content: space-between;
         align-items: center;
         flex-direction: vertical;
-        // background-color: pink;        
+        // background-color: pink;    
+        
+        // font-size: 16px;
         
         .description {
             text-transform: uppercase;
             opacity: 0; 
 
-            // line-height: 1rem;
+            line-height: 1em;
             // display: inline-block;
 
             white-space: nowrap;
@@ -35,18 +37,18 @@ const HeroWrapper = styled.div`
             }
 
             .name {
-                line-height: 2.5rem;
-                font-size: 2.5rem;
+                line-height: 1.2em;
+                font-size: 2.5em;
                 font-weight: 400;
-                letter-spacing: 0.2rem;
-                margin-bottom: 1rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 0.25em;
             }
 
             .title {
-                font-size: 1.1rem;
-                letter-spacing: 0.15rem;
+                font-size: 1.1em;
+                letter-spacing: 0.15em;
                 font-weight: 350;
-                margin-bottom: 1rem;
+                margin-bottom: 1em;
             }
         }
 
@@ -65,23 +67,53 @@ const HeroWrapper = styled.div`
         }
         @media screen and (max-width: 600px) {
             .hero-mesh {
-                width: 50vw;
+                max-width: 50vw;
                 // position: absolute;
                 // right: -25vw;
                 // display: flex;
                 // left-margin: 30vw;
-                height: 90vh;
+                max-height: 90vh;
                 // background-color: pink;
 
-                margin-right: 0;
+                margin-right: -10vw;
                 svg {
                     // background-color: red;
                 }
             }
         }
 
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 500px) {
             .hero-mesh {
+                max-width: 45vw;
+                max-height: 90vh;
+
+                margin-right: -15vw;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .description {
+                font-size: 14px;
+            }
+
+            .hero-mesh {
+                max-width: 45vw;
+                max-height: 90vh;
+
+                margin-right: -15vw;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            // .description {
+            //     font-size: 12px;
+            // }
+
+            .hero-mesh {
+                // max-width: 60vw;
+                // max-height: 90vh;
+
+                // margin-right: 0;
                 display: none;
             }
         }

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 const LayoutWrapper = styled.div`    
-
     main {        
         padding-top: 70px;
         padding-bottom: 110px;

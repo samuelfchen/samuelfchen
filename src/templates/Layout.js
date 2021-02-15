@@ -6,6 +6,8 @@ import Footer from "../components/layout/Footer"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+import '../styles/default.scss'
+
 // styling
 import LayoutWrapper from '../styles/layout/LayoutStyles.js'
 import {Normalize} from 'styled-normalize'
