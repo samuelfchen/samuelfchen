@@ -6,7 +6,7 @@ const FooterWrapper = styled.footer`
     margin-left: 10vw;
     height: 40px;
     margin-top: -40px;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 
     display: flex;
     justify-content: space-between;
