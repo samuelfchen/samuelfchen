@@ -70,8 +70,8 @@ const HeaderWrapper = styled.header`
             a {
                 margin: 0 15px;
                 img {
-                    width: 30px;
-                    height: 30px;
+                    width: 25px;
+                    height: 25px;
                 }
 
                 &:last-child {

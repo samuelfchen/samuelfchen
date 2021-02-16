@@ -5,12 +5,12 @@ const AnimatedIconWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     img {
-        width: 2rem;
-        height: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
     span {
         margin-top: -2px;
-        font-size: 0.55rem;
+        font-size: 0.7rem;
         text-transform: lowercase;
         opacity: 0;
     }
