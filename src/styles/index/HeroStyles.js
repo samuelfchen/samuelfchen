@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-    height: calc(100vh);
-    margin-left: 10vw;
+    height: calc(100vh - 70px);
+    margin-left: calc(10vw-1000px);
     // background-color: green;
     overflow: hidden;
+    width: 90vw;
+    left: calc(-40vw + 50%);
+    position: relative;
 
     .hero-content {
         position: absolute
@@ -19,6 +22,10 @@ const HeroWrapper = styled.div`
         // font-size: 16px;
         
         .description {
+            p {
+                margin-bottom: 0;
+            }
+
             text-transform: uppercase;
             opacity: 0; 
 
@@ -49,6 +56,7 @@ const HeroWrapper = styled.div`
                 letter-spacing: 0.15em;
                 font-weight: 350;
                 margin-bottom: 1em;
+                // marign-top: 0;
             }
         }
 

@@ -3,6 +3,8 @@ import { normalize } from 'styled-normalize';
 
 const LayoutWrapper = styled.div`    
     main {        
+        position: relative;
+
         padding-top: 70px;
         padding-bottom: 110px;
 
@@ -10,7 +12,7 @@ const LayoutWrapper = styled.div`
         max-width: 1000px;
         // margin-left: 10vw;
         margin: 0 auto;
-        // background-color: green;
+        // background-color: gray;
 
         
         min-height: 100vh;

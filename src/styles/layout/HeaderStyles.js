@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
     position: fixed;
-    z-index: 5;
+    z-index: 100;
     background-color: white;
     width: 100vw;
     top: 0;
