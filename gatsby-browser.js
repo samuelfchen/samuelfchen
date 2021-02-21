@@ -1,13 +1,13 @@
-// in gastby-browser.js
-exports.shouldUpdateScroll = ({
-  routerProps: { location },
-  getSavedScrollPosition,
-}) => {
-  window.scrollTo(0, 0)
+// // in gastby-browser.js
+// exports.shouldUpdateScroll = ({
+//   routerProps: { location },
+//   getSavedScrollPosition,
+// }) => {
+//   window.scrollTo(0, 0)
 
-  return false
-}
+//   return false
+// }
 
-exports.onInitialClientRender = () => {
-  window.scrollTo(0, 0);
-};
+// exports.onInitialClientRender = () => {
+//   window.scrollTo(0, 0);
+// };
