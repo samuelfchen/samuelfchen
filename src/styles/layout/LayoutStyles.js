@@ -3,21 +3,20 @@ import { normalize } from 'styled-normalize';
 
 const LayoutWrapper = styled.div`    
     main {        
-        position: relative;
+        // position: relative;
 
         padding-top: 70px;
-        padding-bottom: 110px;
+        padding-bottom: 70px;
 
         width: 80vw;
         max-width: 1000px;
         // margin-left: 10vw;
         margin: 0 auto;
-        // background-color: gray;
+        background-color: gray;
 
-        
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
         
         p {
             // margin-top: 1em ;
