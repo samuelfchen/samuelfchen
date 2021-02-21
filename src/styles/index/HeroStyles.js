@@ -34,7 +34,7 @@ const HeroWrapper = styled.div`
 
             @keyframes fadein {
                 from {
-                    transform: translate3d(0,-40px,0)
+                    transform: translate3d(0,-400px,0)
                 }
             
                 to {
