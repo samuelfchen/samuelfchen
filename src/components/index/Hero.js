@@ -23,13 +23,6 @@ const Hero = () => {
             opacity: 1,
             delay: 0.5
         })
-
-        // TweenLite.fromTo(imageItem, 1, {
-        //     opacity: 0
-        // }, {
-        //     opacity: 1,
-        //     delay: 1.5
-        // })
     })
 
     return (
@@ -57,10 +50,6 @@ const Hero = () => {
             <div className="arrow-down"> 
                 <img src={down} alt="down arrow"/>
             </div>
-
-            
-
-            
         </HeroWrapper>
     )
 }
