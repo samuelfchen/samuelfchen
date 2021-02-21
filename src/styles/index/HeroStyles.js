@@ -5,8 +5,8 @@ const HeroWrapper = styled.div`
     background-color: green;
     overflow: hidden;
     width: 90vw;
-    // left: calc(-40vw + 50%);
-    // position: absolute;
+    left: calc(-40vw + 50%);
+    position: relative;
 
     .hero-content {
         position: absolute
@@ -22,7 +22,7 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fade-in 1.1s ease-in-out 0s; 
+            animation: fade-in 1.1s ease-in-out 0.05s; 
             animation-fill-mode: forwards;
 
             opacity: 0;
