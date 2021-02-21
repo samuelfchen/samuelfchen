@@ -5,8 +5,8 @@ const HeroWrapper = styled.div`
     background-color: green;
     overflow: hidden;
     width: 90vw;
-    left: calc(-40vw + 50%);
-    position: absolute;
+    // left: calc(-40vw + 50%);
+    // position: absolute;
 
     .hero-content {
         position: absolute
