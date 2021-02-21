@@ -45,7 +45,7 @@ svg {
     opacity: 0;
     stroke-dasharray: ${(props) => props.pathLength};
     stroke-dashoffset: ${(props) => props.pathLength};
-    animation: appear 0.05s linear forwards, draw 20s ease-in forwards;
+    animation: appear 0.05s linear forwards 1.2s, draw 15s ease-in forwards 1.2s;
   }
 
   @keyframes appear {
@@ -72,8 +72,7 @@ svg {
             opacity: 1;
         }
     }
-    animation: fade 1.5s ease-in forwards;
-    animation-delay: 4s;
+    animation: fade 1.5s ease-in-out forwards 4.2s;
     opacity: 0;
   }
 

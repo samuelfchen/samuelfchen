@@ -23,14 +23,14 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fade-in 1s linear 0s; 
+            animation: fade-in 1.1s ease-in-out 0s; 
             animation-fill-mode: forwards;
 
             opacity: 0;
 
             @keyframes fade-in {
                 from {
-                    transform: translateY(40px);
+                    transform: translateY(70px);
                 }
 
                 to {
@@ -91,27 +91,18 @@ const HeroWrapper = styled.div`
         }
         @media screen and (max-width: 600px) {
             .hero-mesh {
-                max-width: 50vw;
-                // position: absolute;
-                // right: -25vw;
-                // display: flex;
-                // left-margin: 30vw;
-                max-height: 90vh;
-                // background-color: pink;
-
-                margin-right: -10vw;
-                svg {
-                    // background-color: red;
-                }
+                margin-right: -3vw
+            }
+        }
+        @media screen and (max-width: 550px) {
+            .hero-mesh {
+                margin-right: -5vw
             }
         }
 
         @media screen and (max-width: 500px) {
             .hero-mesh {
-                max-width: 45vw;
-                max-height: 90vh;
-
-                margin-right: -15vw;
+                margin-right: -12vw;
             }
         }
 
@@ -121,23 +112,15 @@ const HeroWrapper = styled.div`
             }
 
             .hero-mesh {
-                max-width: 45vw;
-                max-height: 90vh;
+                max-width: 60vw;
+                max-height: 95vh;
 
-                margin-right: -15vw;
+                margin-right: -10vw;
             }
         }
 
         @media screen and (max-width: 350px) {
-            // .description {
-            //     font-size: 12px;
-            // }
-
             .hero-mesh {
-                // max-width: 60vw;
-                // max-height: 90vh;
-
-                // margin-right: 0;
                 display: none;
             }
         }

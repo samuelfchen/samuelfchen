@@ -10,6 +10,16 @@ const IconBarWrapper = styled.div`
     &:last-child {
         margin-right: 0;
     }
+
+    @media screen and (max-width: 400px) {
+        width: ${props => props.numIcons * 2.5}rem;
+
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
 `;
 
 export default IconBarWrapper;
