@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
     height: calc(100vh - 70px);
-    background-color: green;
+    // background-color: green;
     overflow: hidden;
     width: 90vw;
     left: calc(-40vw + 50%);
@@ -22,13 +22,15 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            // animation: fade-in 1.1s ease-in-out 0.05s; 
-            // animation-fill-mode: forwards;
+            animation: fadein 1.1s ease-in-out 0.05s; 
+            animation-fill-mode: forwards;
 
-            opacity: 1;
+            opacity: 0;
+            transform: translateY(70px);
 
-            @keyframes fade-in {
+            @keyframes fadein {
                 from {
+                    opacity: 0;
                     transform: translateY(70px);
                 }
 
