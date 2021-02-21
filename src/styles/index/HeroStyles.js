@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-    height: calc(100vh - 70px);
-    // background-color: green;
+    // height: calc(100vh - 70px);
+    height: 100vh;
+    background-color: green;
     overflow: hidden;
     width: 90vw;
     left: calc(-40vw + 50%);
     position: relative;
+    top: -70px;
 
     .hero-content {
         position: absolute
