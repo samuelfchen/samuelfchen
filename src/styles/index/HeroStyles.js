@@ -25,21 +25,21 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fadein 1.1s ease-in-out 0.05s; 
+            animation: fadein 1s; 
             animation-fill-mode: forwards;
 
-            opacity: 0;
+            // opacity: 0;
             // transform: translateY(70px);
             // position: fixed;
 
             @keyframes fadein {
-                from {
-                    transform: translate3d(0,-400px,0)
+                0%, 20% {
+                    transform: translateY(65px);
+                    opacity: 0;
                 }
-            
-                to {
-                    transform: translate3d(0,0,0);
-                    opacity: 1
+                100% {
+                transform: translateY(0);
+                opacity: 1;
                 }
             }
 
