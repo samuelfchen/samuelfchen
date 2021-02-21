@@ -14,6 +14,7 @@ const HeroWrapper = styled.div`
         position: absolute
         z-index: 10;
         height: 100%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -27,18 +28,17 @@ const HeroWrapper = styled.div`
             animation: fadein 1.1s ease-in-out 0.05s; 
             animation-fill-mode: forwards;
 
-            // opacity: 0;
+            opacity: 0;
             // transform: translateY(70px);
 
             @keyframes fadein {
                 from {
-                    opacity: 0;
-                    transform: translateY(70px);
+                    transform: translate3d(0,40px,0)
                 }
-
+            
                 to {
-                    transform: translateY(0px);
-                    opacity: 1;
+                    transform: translate3d(0,0,0);
+                    opacity: 1
                 }
             }
 
