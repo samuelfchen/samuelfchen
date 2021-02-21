@@ -12,7 +12,7 @@ const IconBar = () => {
         <IconBarWrapper numIcons={contact.length}>
             {
                 contact.map((imageData) => {
-                    return <AnimatedIcon icon={imageData.icon} label={imageData.label} url={imageData.url}/>
+                    return <AnimatedIcon icon={imageData.icon} label={imageData.label} url={imageData.url} key={imageData.id}/>
                 })
             }
         </IconBarWrapper>

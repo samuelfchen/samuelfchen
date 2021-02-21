@@ -4,6 +4,7 @@ import githubIcon from "./github-icon.svg"
 import linkedinIcon from "./linkedin-icon.svg"
 import emailIcon from "./email-icon.svg"
 import resumeIcon from "./resume-icon.svg"
+import instagramIcon from "./instagram-icon.svg"
 
 export default [
     {
@@ -17,6 +18,11 @@ export default [
         url: 'https://www.linkedin.com/in/samuelfchen/'
     }, 
     {
+        icon: instagramIcon,
+        label: 'instagram',
+        url: 'https://www.instagram.com/samuelfchen/'
+    },
+    {
         icon: emailIcon,
         label: 'email',
         url: 'mailto:samuel.f.chen@gmail.com'
@@ -26,4 +32,6 @@ export default [
         label: 'resume',
         url: '#'
     }, 
+    
+    
 ] 

@@ -6,6 +6,10 @@ const IconBarWrapper = styled.div`
     justify-content: space-between;
     margin-right: 1.5rem;
     flex-direction: row;
+
+    &:last-child {
+        margin-right: 0;
+    }
 `;
 
 export default IconBarWrapper;

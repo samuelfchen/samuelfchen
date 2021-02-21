@@ -8,11 +8,23 @@ const AnimatedIconWrapper = styled.div`
         width: 2.5rem;
         height: 2.5rem;
     }
+
+    a:hover + span {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
     span {
-        margin-top: -2px;
         font-size: 0.7rem;
         text-transform: lowercase;
+        position: absolute;
+        bottom: -1rem;
+
+        transition: 0.4s;
         opacity: 0;
+        transform: translateY(-0.25rem);
+
+        overflow: auto;
     }
 `;
 

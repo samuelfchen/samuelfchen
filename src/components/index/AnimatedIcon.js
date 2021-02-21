@@ -1,15 +1,15 @@
 import React, { useRef } from "react"
-import TweenMax from 'gsap'
+// import TweenMax from 'gsap'
 
 import AnimatedIconWrapper from '../../styles/index/AnimatedIconStyles'
 
-const showLabel = (label) => {
-    TweenMax.to(label, 0.4, {autoAlpha: 1, y: 3});
-}
+// const showLabel = (label) => {
+//     TweenMax.to(label, 0.4, {autoAlpha: 1, y: 3});
+// }
 
-const hideLabel = (label) => {
-    TweenMax.to(label, 0.4, {autoAlpha: 0, y: -3});
-}
+// const hideLabel = (label) => {
+//     TweenMax.to(label, 0.4, {autoAlpha: 0, y: -3});
+// }
 
 const AnimatedIcon = (props) => {
 
@@ -21,12 +21,12 @@ const AnimatedIcon = (props) => {
                 href={ props.url } 
                 target="_blank" 
                 rel="noreferrer"
-                onMouseEnter={() => showLabel(label)}
-                onMouseLeave={() => hideLabel(label)}
+                // onMouseEnter={() => showLabel(label)}
+                // onMouseLeave={() => hideLabel(label)}
             >
-                <img src={ props.icon } alt="github"/>
+                <img src={ props.icon } alt={ props.label }/>
             </a>
-            <span ref={el => {label = el}}>{ props.label }</span>
+            <span>{ props.label }</span>
         </AnimatedIconWrapper>
     )
 }

@@ -27,9 +27,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Normalize/>
 
       <LayoutWrapper>
+        <Normalize/>
+
         <Helmet>
           <title>{data.site.siteMetadata.title}</title>
         </Helmet>

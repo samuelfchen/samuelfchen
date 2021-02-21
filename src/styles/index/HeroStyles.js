@@ -22,16 +22,32 @@ const HeroWrapper = styled.div`
         // font-size: 16px;
         
         .description {
+            // Animations
+            animation: fade-in 1s linear 0.5s; 
+            animation-fill-mode: forwards;
+
+            opacity: 0;
+
+            @keyframes fade-in {
+                from {
+                    transform: translateY(40px);
+                }
+
+                to {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+
+            text-transform: uppercase;
+            line-height: 1em;
+
+            // Css reset
             p {
                 margin-bottom: 0;
             }
 
-            text-transform: uppercase;
-            opacity: 0; 
-
-            line-height: 1em;
-            // display: inline-block;
-
+            // line break
             white-space: nowrap;
             .rwd-break {
                 display: none;
