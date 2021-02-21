@@ -11,7 +11,7 @@ const HeroWrapper = styled.div`
     top: -70px;
 
     .hero-content {
-        position: absolute
+        // position: absolute
         z-index: 10;
         height: 100%;
         width: 100%;
