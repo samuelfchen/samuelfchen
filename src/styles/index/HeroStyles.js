@@ -25,8 +25,8 @@ const HeroWrapper = styled.div`
             animation: fadein 1.1s ease-in-out 0.05s; 
             animation-fill-mode: forwards;
 
-            opacity: 0;
-            transform: translateY(70px);
+            // opacity: 0;
+            // transform: translateY(70px);
 
             @keyframes fadein {
                 from {
