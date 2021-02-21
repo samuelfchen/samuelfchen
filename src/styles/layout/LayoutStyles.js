@@ -12,7 +12,7 @@ const LayoutWrapper = styled.div`
         max-width: 1000px;
         // margin-left: 10vw;
         margin: 0 auto;
-        background-color: gray;
+        // background-color: gray;
 
         min-height: 100vh;
         // display: flex;
