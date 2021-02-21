@@ -7,6 +7,11 @@ const AnimatedIconWrapper = styled.div`
     img {
         width: 2.5rem;
         height: 2.5rem;
+
+        @media screen and (max-width: 400px) {
+            width: 2rem;
+            height: 2rem;
+        }
     }
 
     a:hover + span {
