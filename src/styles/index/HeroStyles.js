@@ -30,11 +30,11 @@ const HeroWrapper = styled.div`
 
             opacity: 0;
             // transform: translateY(70px);
-            position: fixed;
+            // position: fixed;
 
             @keyframes fadein {
                 from {
-                    transform: translate3d(0,40px,0)
+                    transform: translate3d(0,-40px,0)
                 }
             
                 to {
