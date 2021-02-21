@@ -23,7 +23,7 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fade-in 1s linear 0.5s; 
+            animation: fade-in 1s linear 0s; 
             animation-fill-mode: forwards;
 
             opacity: 0;
