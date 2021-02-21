@@ -22,10 +22,10 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fade-in 1.1s ease-in-out 0.05s; 
-            animation-fill-mode: forwards;
+            // animation: fade-in 1.1s ease-in-out 0.05s; 
+            // animation-fill-mode: forwards;
 
-            opacity: 0;
+            opacity: 1;
 
             @keyframes fade-in {
                 from {
