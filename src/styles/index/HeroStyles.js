@@ -24,23 +24,23 @@ const HeroWrapper = styled.div`
         
         .description {
             // Animations
-            animation: fadein 1s; 
-            animation-fill-mode: forwards;
+            // animation: fadein 1s; 
+            // animation-fill-mode: forwards;
 
             opacity: 0;
             transform: translateY(70px);
             // position: fixed;
 
-            @keyframes fadein {
-                0%, 20% {
-                    transform: translateY(65px);
-                    opacity: 0;
-                }
-                100% {
-                transform: translateY(0);
-                opacity: 1;
-                }
-            }
+            // @keyframes fadein {
+            //     0%, 20% {
+            //         transform: translateY(65px);
+            //         opacity: 0;
+            //     }
+            //     100% {
+            //     transform: translateY(0);
+            //     opacity: 1;
+            //     }
+            // }
 
             text-transform: uppercase;
             line-height: 1em;
