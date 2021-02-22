@@ -26,6 +26,7 @@ const HeroWrapper = styled.div`
             // Animations
             animation: fadein 1s; 
             animation-fill-mode: forwards;
+            animation-delay: 3s;
 
             // opacity: 0;
             // transform: translateY(70px);
