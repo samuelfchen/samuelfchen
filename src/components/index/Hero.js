@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from "react"
 import IconBar from "./IconBar.js"
 
-import { TweenLite } from 'gsap'
+import { TweenMax } from 'gsap'
 
 import HeroWrapper from '../../styles/index/HeroStyles'
 
@@ -14,7 +14,7 @@ const Hero = () => {
     let heroItem = useRef(null);
     
     useEffect(() => {
-        TweenLite.fromTo(heroItem, 1, {
+        TweenMax.fromTo(heroItem, 1, {
             y: 40,
             opacity: 0
         }, {
