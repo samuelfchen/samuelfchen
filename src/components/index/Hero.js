@@ -13,16 +13,16 @@ const Hero = () => {
     let imageItem = useRef(null);
     let heroItem = useRef(null);
     
-    // useEffect(() => {
-    //     TweenLite.fromTo(heroItem, 1, {
-    //         y: 40,
-    //         opacity: 0
-    //     }, {
-    //         y:0,
-    //         opacity: 1,
-    //         delay: 0.5
-    //     })
-    // })
+    useEffect(() => {
+        TweenLite.fromTo(heroItem, 1, {
+            y: 40,
+            opacity: 0
+        }, {
+            y:0,
+            opacity: 1,
+            delay: 0.5
+        })
+    })
 
     return (
         <HeroWrapper>
