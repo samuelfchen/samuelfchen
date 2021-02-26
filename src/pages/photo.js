@@ -29,7 +29,7 @@ const PhotoPage = ({
   return (
     <Layout>
       <h1>
-        Photos
+        Albums
       </h1>
       <div>
         {Albums}
