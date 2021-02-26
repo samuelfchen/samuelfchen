@@ -10,7 +10,9 @@ const AlbumLinkWrapper = styled.div`
         }
 
         .outer-image .image {
-            filter: blur(4px) brightness(0.8);
+            filter: brightness(0.7) blur(3px);
+            transform: scale(1.05);
+            // transform-origin: 0% 0% 0px;
         }
         
     }
@@ -19,31 +21,22 @@ const AlbumLinkWrapper = styled.div`
         position: relative;
 
         .outer-image {
-            width: 80vw;
-            max-width: 1000px;
-            height: 32vw;
-            max-height: 400px;
+            min-width: 100%;
+            min-height: 100%;
             overflow: hidden;
-
-            // &:hover {
-            //     .image {
-            //         filter: blur(4px) brightness(0.8);
-            //     }
-            // }
         
             .image {
-                transition: 0.7s;
-                
-            }
+                img {
+                    position: absolute;
+                }
+                transition: 1s;
+                // position: absolute;
+                height: 100%;
+                width: 100%;
+                // -webkit-transform: translateZ(0);
+                // transform: translateZ(0);
+            }        
         }
-
-
-        // .description:before {
-        //     width: 100%
-        //     height: 100%;
-        //     background-color: black;
-        //     z-index: 2;
-        // }
 
         .description {
             transition: 0.7s;
