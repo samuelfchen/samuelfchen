@@ -8,26 +8,41 @@ const AlbumLinkWrapper = styled.div`
         .description {
             opacity: 1;
         }
-        img {
-            transform: scale(1.1);
-            filter: blur(4px) brightness(0.8);
-        }
+        
     }
 
     a {
         position: relative;
-              
-        img {
-            transition: 0.7s;
+
+        .outer-image {
+            width: 80vw;
+            max-width: 1000px;
+            height: 32vw;
+            max-height: 400px;
+            overflow: hidden;
+
+            .image {
+                transition: 0.7s;
+                &:hover {
+                    filter: blur(4px) brightness(0.8);
+                }
+            }
         }
-        
+
+
+        // .description:before {
+        //     width: 100%
+        //     height: 100%;
+        //     background-color: black;
+        //     z-index: 2;
+        // }
 
         .description {
             transition: 0.7s;
             opacity: 0;
             
             position: absolute;
-            width: 90vw;
+            width: 80vw;
             max-width: 1000px;
             height: 100%;
         

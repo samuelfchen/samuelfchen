@@ -10,7 +10,11 @@ const AlbumLink = ({ post, data }) => {
   return (
     <AlbumLinkWrapper>
       <Link to={post.frontmatter.slug}>
-        <DynImage className="image" alt="Gatsby in Space" filename={featuredImage}/>
+        <div className="outer-image">
+          <div className="image">
+            <DynImage alt="" filename={featuredImage}/>
+          </div>
+        </div>
         <div className='description'>
           <h2>{post.frontmatter.title} | {post.frontmatter.date}</h2> 
           <p>{post.frontmatter.subtitle}</p> 

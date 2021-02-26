@@ -2,7 +2,10 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
+import styled from 'styled-components'
+
 // Note: You can change "images" to whatever you'd like.
+
 
 const Image = props => (
   <StaticQuery
@@ -34,7 +37,9 @@ const Image = props => (
       }
 
       //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
-      return <Img alt={props.alt} fluid={{...image.node.childImageSharp.fluid, aspectRatio: 10 / 4}} />;
+      return (
+          <Img alt={props.alt} fluid={{...image.node.childImageSharp.fluid, aspectRatio: 10 / 4}} />
+      );
     }}
   />
 );
