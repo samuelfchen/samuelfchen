@@ -8,6 +8,10 @@ const AlbumLinkWrapper = styled.div`
         .description {
             opacity: 1;
         }
+
+        .outer-image .image {
+            filter: blur(4px) brightness(0.8);
+        }
         
     }
 
@@ -21,11 +25,15 @@ const AlbumLinkWrapper = styled.div`
             max-height: 400px;
             overflow: hidden;
 
+            // &:hover {
+            //     .image {
+            //         filter: blur(4px) brightness(0.8);
+            //     }
+            // }
+        
             .image {
                 transition: 0.7s;
-                &:hover {
-                    filter: blur(4px) brightness(0.8);
-                }
+                
             }
         }
 
