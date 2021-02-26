@@ -14,8 +14,6 @@ const AlbumLinkWrapper = styled.div`
         }
     }
 
-    
-
     a {
         position: relative;
               
