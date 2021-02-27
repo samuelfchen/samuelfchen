@@ -79,8 +79,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         // additional data can be passed via context
         slug: node.frontmatter.slug,
-        imgDir: `albums/${node.frontmatter.slug}`,
-        imgUrl: `albums/${node.frontmatter.slug}/${node.frontmatter.featuredImage}`
+        imgDir: `albums/${node.frontmatter.slug}`
       },
     })
   })
