@@ -27,10 +27,10 @@ const AlbumLinkWrapper = styled.div`
                 img {
                     // position: absolute;
                     opacity: 1;
-                    object-fit: cover;
-                    object-position: center center;
+                    // object-fit: cover;
+                    // object-position: center center;
                     
-                    min-width: 80vw;
+                    width: 80vw;
                     max-width: 1000px;
                 }
                 transition: 1s;
