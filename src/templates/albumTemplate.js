@@ -63,7 +63,7 @@ export default function Template({
         <div className="gallery">
           <Gallery photos={photos} onClick={openLightbox}/>
 
-          {isOpen && (
+          {/* {isOpen && (
           <Lightbox
           mainSrc={photos[currentImage].src}
           nextSrc={photos[(currentImage + 1) % photos.length].src}
@@ -72,7 +72,7 @@ export default function Template({
           onMovePrevRequest={photoBack}
           onMoveNextRequest={photoForward}
         />
-        )}
+        )} */}
         </div>
 
       </PhotoAlbumWrapper>
