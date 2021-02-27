@@ -67,7 +67,7 @@ module.exports = {
         // },
         context: true,
         tags: true,
-        maxResults: 100,
+        maxResults: 300,
       }
     },
     {
