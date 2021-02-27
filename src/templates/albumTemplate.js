@@ -36,7 +36,7 @@ export default function Template({
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
-  }, []);
+  }, []); 
 
   const closeLightbox = () => {
     setCurrentImage(0);
