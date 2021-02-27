@@ -5,11 +5,6 @@ const AlbumLinkWrapper = styled.div`
     padding-top: 20px;
 
     a {
-        min-width: 80vw;
-        min-height: 32vw;
-        max-width: 1000px;
-        max-height: 400px;
-
         position: relative;
 
         &:hover {
@@ -33,11 +28,10 @@ const AlbumLinkWrapper = styled.div`
                     // position: absolute;
                     opacity: 1;
                     object-fit: cover;
-                    object-position: center;
+                    object-position: center center;
+                    
                     min-width: 80vw;
-                    min-height: 32vw;
                     max-width: 1000px;
-                    max-height: 400px;
                 }
                 transition: 1s;
                 // position: absolute;
