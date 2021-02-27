@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Samuel Chen`,
@@ -50,6 +52,34 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    // Cloudinary 
+    {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+        prefix: `albums/`,
+        // queryParams: {
+        //   ...queryParams,
+        //   max_results: 500,
+        // },
+        context: true,
+        tags: true,
+        maxResults: 100,
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-cloudinary',
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        uploadFolder: 'gatsby-cloudinary',
+      }
+    },
+    // One liners
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,

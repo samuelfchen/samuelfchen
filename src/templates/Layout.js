@@ -27,7 +27,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-
       <LayoutWrapper>
         <Normalize/>
 
