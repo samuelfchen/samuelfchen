@@ -58,7 +58,7 @@ export default function Template({
         {/* <div className="blog-intro">
           <h1>{frontmatter.title}</h1>
           <h2>{frontmatter.subtitle}</h2>
-        </div> */}
+        </div> */} 
 
         <div className="gallery">
           <Gallery photos={photos} onClick={openLightbox}/>
