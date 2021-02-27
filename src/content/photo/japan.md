@@ -4,5 +4,5 @@ title: "Japan"
 subtitle: "A trip to Japan"
 date: "2020-02-10"
 type: "photoAlbum"
-featuredImage: "Japan2020-1.jpg"
+featuredImage: "https://res.cloudinary.com/samuelfchen/image/upload/v1614435050/albums/japan/Japan2020-115_sc1iun.jpg"
 ---

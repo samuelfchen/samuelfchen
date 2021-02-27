@@ -20,7 +20,7 @@ export default function Template({
 
   const clImages = data.allCloudinaryMedia.edges;
 
-  const photos = clImages.map((edge) => {
+  const photos = clImages.filter(edge => !!edge.node.public_id).map((edge) => {
     return {
       src: edge.node.secure_url,
       height: edge.node.height,
