@@ -6,7 +6,8 @@ import Img from "gatsby-image"
 // import Gallery from '../components/photo/Gallery'
 import Gallery from "react-photo-gallery"
 import Carousel, { Modal, ModalGateway } from "react-images";
-
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 import Images from '../components/photo/AlbumImages'
 
@@ -30,7 +31,7 @@ export default function Template({
 
   // Lightbox stuff
   const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [isOpen, setViewerIsOpen] = useState(false);
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -42,6 +43,15 @@ export default function Template({
     setViewerIsOpen(false);
   };
 
+  const photoForward = () => {
+    setCurrentImage((currentImage + 1) % photos.length);
+  }
+
+  const photoBack = () => {
+    setCurrentImage((currentImage + photos.length - 1) % photos.length)
+  }
+
+
   return (
     <Layout>
       <PhotoAlbumWrapper>
@@ -51,21 +61,18 @@ export default function Template({
         </div> */}
 
         <div className="gallery">
-          <Gallery photos={photos} onClick={openLightbox} />
-          <ModalGateway>
-            {viewerIsOpen ? (
-            <Modal onClose={closeLightbox}>
-              <Carousel
-              currentIndex={currentImage}
-              views={photos.map(x => ({
-              ...x,
-              srcset: x.srcSet,
-              caption: x.title
-              }))}
-              />
-            </Modal>
-            ) : null}
-          </ModalGateway>
+          <Gallery photos={photos} onClick={openLightbox}/>
+
+          {isOpen && (
+          <Lightbox
+          mainSrc={photos[currentImage].src}
+          nextSrc={photos[(currentImage + 1) % photos.length].src}
+          prevSrc={photos[(currentImage + photos.length - 1) % photos.length].src}
+          onCloseRequest={closeLightbox}
+          onMovePrevRequest={photoBack}
+          onMoveNextRequest={photoForward}
+        />
+        )}
         </div>
 
       </PhotoAlbumWrapper>
