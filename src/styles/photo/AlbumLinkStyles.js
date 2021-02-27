@@ -32,12 +32,12 @@ const AlbumLinkWrapper = styled.div`
                     
                     width: 80vw;
                     max-width: 1000px;
+                    height: 32vw;
+                    // max-height: 400px;
                 }
                 transition: 1s;
                 // position: absolute;
-                height: 400px;
-                width: 80vw;
-                max-width: 1000px;
+
                 // -webkit-transform: translateZ(0);
                 // transform: translateZ(0);
             }        
@@ -49,9 +49,9 @@ const AlbumLinkWrapper = styled.div`
             
             position: absolute;
             width: 80vw;
-            max-width: 1000px;
-            height: 100%;
-            max-height: 400px;
+            // max-width: 1000px;
+            // height: 10vh;
+            // max-height: 400px;
             // height: 100%;
             // width: 100%;
         
