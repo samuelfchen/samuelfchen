@@ -32,7 +32,7 @@ const GatsbyImage = ({ index, onClick, photo, margin }) => (
     />
   </ImageWrapper>
 )
-
+ 
 const fileNumber = file =>
   Number(file.node.childImageSharp.fluid.originalName.replace(/[a-z]/gi, ''))
 
