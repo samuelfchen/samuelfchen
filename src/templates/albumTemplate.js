@@ -5,7 +5,6 @@ import Layout from './Layout'
 import Img from "gatsby-image"
 // import Gallery from '../components/photo/Gallery'
 import Gallery from "react-photo-gallery"
-import Carousel, { Modal, ModalGateway } from "react-images";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
@@ -65,6 +64,7 @@ export default function Template({
 
           {isOpen && (
           <Lightbox
+          reactModalProps={{ shouldReturnFocusAfterClose: false }}
           mainSrc={photos[currentImage].src}
           nextSrc={photos[(currentImage + 1) % photos.length].src}
           prevSrc={photos[(currentImage + photos.length - 1) % photos.length].src}

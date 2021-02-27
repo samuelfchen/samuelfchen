@@ -22,6 +22,15 @@ const PhotoAlbumWrapper = styled.div`
         position: absolute;
         // top: -70px;
     }
+
+    img {
+        transition: 0.7s;
+        overflow: hidden;
+    }
+
+    img:hover {
+        filter: brightness(0.8);
+    }
     
 `
 
