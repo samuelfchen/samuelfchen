@@ -33,7 +33,7 @@ const AlbumLinkWrapper = styled.div`
                     width: 80vw;
                     max-width: 1000px;
                     height: 32vw;
-                    // max-height: 400px;
+                    max-height: 400px;
                 }
                 transition: 1s;
                 // position: absolute;
