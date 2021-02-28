@@ -27,7 +27,7 @@ const PhotoPage = ({
     .map(edge => <AlbumLink key={edge.node.id} post={edge.node}/>)
 
   return (
-    <Layout>
+    <Layout limitWidth="true">
       <h1>
         Albums
       </h1>

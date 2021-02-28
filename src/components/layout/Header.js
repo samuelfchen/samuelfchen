@@ -28,25 +28,27 @@ const Header = () => {
 
   return (
     <HeaderWrapper isScrolled={isScrolled}>
-      <div className="logo">
-        <Link to="/" activeClassName="active">
-          {/* <LogoSVG/>
-          <p>samuel chen</p> */}
-          sc
-        </Link>
-      </div>
+      <div className="inner-header">
+        <div className="logo">
+          <Link to="/" activeClassName="active">
+            {/* <LogoSVG/>
+            <p>samuel chen</p> */}
+            sc
+          </Link>
+        </div>
 
-      <div className="navigation">
-        <nav className='desktop'>
-          <Link to="/photo" activeClassName="active">photography</Link>
-          <Link to="/blog" activeClassName="active">blog</Link>
-          {/* <Link to="/projects" activeClassName="active">projects</Link> */}
-          {/* <Link to="/about" activeClassName="active">about</Link> */}
-        </nav>
-        <nav className='mobile'>
-          <Link to="/photo"><img src={photoIconURL} alt='photo'/></Link>
-          <Link to="/blog"><img src={blogIconURL} alt='blog'/></Link>
-        </nav>
+        <div className="navigation">
+          <nav className='desktop'>
+            <Link to="/photo" activeClassName="active">photography</Link>
+            <Link to="/blog" activeClassName="active">blog</Link>
+            {/* <Link to="/projects" activeClassName="active">projects</Link> */}
+            {/* <Link to="/about" activeClassName="active">about</Link> */}
+          </nav>
+          <nav className='mobile'>
+            <Link to="/photo"><img src={photoIconURL} alt='photo'/></Link>
+            <Link to="/blog"><img src={blogIconURL} alt='blog'/></Link>
+          </nav>
+        </div>
       </div>
     </HeaderWrapper>
   )

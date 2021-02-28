@@ -59,9 +59,11 @@ export default function Template({
           <h2>{frontmatter.subtitle}</h2>
         </div> */} 
 
-        <div className="gallery">
-          <Gallery photos={photos} onClick={openLightbox}/>
+        <div className="gallery-wrapper">
+          <div className="gallery">
+            <Gallery photos={photos} onClick={openLightbox}/>
 
+          </div>
           {isOpen && (
           <Lightbox
           reactModalProps={{ shouldReturnFocusAfterClose: false }}

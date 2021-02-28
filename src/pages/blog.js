@@ -16,7 +16,7 @@ const BlogPage = ({
     .map(edge => <PostLink key={edge.node.id} post={edge.node} excerpt={edge.node.excerpt} timeToRead={edge.node.timeToRead} />)
 
   return (
-    <Layout>
+    <Layout limitWidth="true">
       <h1>
         Blog Posts
       </h1>

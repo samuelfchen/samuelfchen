@@ -16,11 +16,15 @@ const PhotoAlbumWrapper = styled.div`
     }
 
 
-    .gallery {
-        width: 80vw;
-        left: 10vw;
-        position: absolute;
+    .gallery-wrapper {
+        position: relative;
         // top: -70px;
+        height: 100%;
+        .gallery {
+            // position: absolute;
+            // width: 80vw;
+            // left: 10vw;
+        }
     }
 
     img {

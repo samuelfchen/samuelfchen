@@ -12,7 +12,7 @@ import '../styles/default.scss'
 import LayoutWrapper from '../styles/layout/LayoutStyles.js'
 import {Normalize} from 'styled-normalize'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, limitWidth }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,20 +27,21 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <LayoutWrapper>
+      <LayoutWrapper limitWidth={limitWidth}>
         <Normalize/>
 
         <Helmet>
           <title>{data.site.siteMetadata.title}</title>
         </Helmet>
         
-        <Header/>
 
         <main>
+          <Header/>
           {children}
         </main>
-
         <Footer/>
+
+
       </LayoutWrapper>
     </>
   )

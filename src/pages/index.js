@@ -10,7 +10,7 @@ import DummyText from "../components/test/DummyText"
 
 const IndexPage = () => (
   <>
-    <Layout>
+    <Layout limitWidth="true">
       <Hero/>
       <h1>About Me</h1>
       <p>Hey there, I'm Sam! Thanks for checking out my website.</p>

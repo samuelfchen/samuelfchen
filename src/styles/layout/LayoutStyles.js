@@ -1,27 +1,25 @@
 import styled from 'styled-components';
-import { normalize } from 'styled-normalize';
 
 const LayoutWrapper = styled.div`    
     main {        
         // position: relative;
+        // background-color: pink;
 
         padding-top: 70px;
         padding-bottom: 70px;
 
         width: 80vw;
-        max-width: 1000px;
-        // margin-left: 10vw;
+
+        max-width: ${props => (props.limitWidth ? '1000px' : 'none')};
         margin: 0 auto;
-        // background-color: gray;
 
         min-height: 100vh;
-        // display: flex;
-        // flex-direction: column;
         
         p {
-            // margin-top: 1em ;
             margin-bottom: 1em ;
         }
+
+
         
         h1 {
             // text-transform: uppercase;

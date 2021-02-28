@@ -14,7 +14,7 @@ export default function Template({
 
   let featuredImgFluid = data.file.childImageSharp.fluid
   return (
-    <Layout>
+    <Layout limitWidth="true">
       <BlogPostWrapper>
         <div className="blog-intro">
           <h1>{frontmatter.title}</h1>
