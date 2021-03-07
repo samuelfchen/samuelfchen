@@ -16,8 +16,27 @@ const LayoutWrapper = styled.div`
         min-height: 100vh;
         
         p {
-            margin-bottom: 1em ;
+            margin-bottom: 1em;
+            line-height: 1.25rem;
+            a {
+                color: black;
+                text-decoration: underline;
+                text-underline-offset: 0.2rem;
+                // border-bottom: 1.5px solid black;
+                padding-bottom: 1px;
+    
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+
+            ul {
+                list-style-type: circle;
+                margin-left: 1.25rem;
+            }
         }
+
+        
 
 
         

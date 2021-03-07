@@ -56,7 +56,7 @@ const GatsbyGallery = ({photosQuery, ...rest}) => {
   
   const photos = getImages(photosQuery);
 
-  console.log(photos)
+  // console.log(photos)
 
   // Lightbox stuff
   const [currentImage, setCurrentImage] = useState(0);
