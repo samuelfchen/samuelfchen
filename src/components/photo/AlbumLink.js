@@ -13,7 +13,8 @@ const AlbumLink = ({ post, data }) => {
       <Link to={post.frontmatter.slug}>
         <div className="outer-image">
           <div className="image">
-            <img alt="" src={post.frontmatter.featuredImage}/>
+            {/* <img alt="" src={post.frontmatter.featuredImage}/> */}
+            <DynImage filename={post.frontmatter.slug}/>
           </div>
         </div>
         <div className='description'>

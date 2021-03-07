@@ -31,10 +31,6 @@ const PhotoAlbumWrapper = styled.div`
         transition: 0.7s;
         overflow: hidden;
     }
-
-    img:hover {
-        filter: brightness(0.8);
-    }
     
 `
 

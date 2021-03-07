@@ -3,14 +3,13 @@ import { graphql } from "gatsby"
 
 import Layout from './Layout'
 import Img from "gatsby-image"
-// import Gallery from '../components/photo/Gallery'
-import Gallery from "react-photo-gallery"
-import Lightbox from 'react-image-lightbox';
+import Gallery from '../components/photo/Gallery.js'
 import 'react-image-lightbox/style.css';
 
-import Images from '../components/photo/AlbumImages'
 
 import PhotoAlbumWrapper from '../styles/photo/PhotoAlbumStyles'
+
+
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -18,38 +17,16 @@ export default function Template({
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, file } = markdownRemark
 
-  const clImages = data.allCloudinaryMedia.edges;
-
-  const photos = clImages.filter(edge => !!edge.node.public_id).map((edge) => {
-    return {
-      src: edge.node.secure_url,
-      height: edge.node.height,
-      width: edge.node.width,
-    }
-  })
-
-  // Lightbox stuff
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isOpen, setViewerIsOpen] = useState(false);
-
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []); 
-
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  };
-
-  const photoForward = () => {
-    setCurrentImage((currentImage + 1) % photos.length);
-  }
-
-  const photoBack = () => {
-    setCurrentImage((currentImage + photos.length - 1) % photos.length)
-  }
-
+  // const clImages = data.allCloudinaryMedia.edges;
+  // const photos = clImages.filter(edge => !!edge.node.public_id).map((edge) => {
+  //   return {
+  //     src: edge.node.secure_url,
+  //     height: edge.node.height,
+  //     width: edge.node.width,
+  //   }
+  // })
+  
+  
 
   return (
     <Layout>
@@ -60,22 +37,12 @@ export default function Template({
         </div> */} 
 
         <div className="gallery-wrapper">
-          <div className="gallery">
-            <Gallery photos={photos} onClick={openLightbox}/>
-
-          </div>
-          {isOpen && (
-          <Lightbox
-          reactModalProps={{ shouldReturnFocusAfterClose: false }}
-          mainSrc={photos[currentImage].src}
-          nextSrc={photos[(currentImage + 1) % photos.length].src}
-          prevSrc={photos[(currentImage + photos.length - 1) % photos.length].src}
-          onCloseRequest={closeLightbox}
-          onMovePrevRequest={photoBack}
-          onMoveNextRequest={photoForward}
-        />
-        )}
+          <Gallery photosQuery={data.allFile.edges}/>
         </div>
+
+        {/* {console.log(data.allFile.edges)} */}
+
+        {/* <Gallery photos={data.allFile.edges}/> */}
 
       </PhotoAlbumWrapper>
     </Layout>
@@ -83,7 +50,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!, $imgDirRegex: String!) {
+  query($slug: String!, $imgDirRegex: String!, $imgDir: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -104,26 +71,26 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {eq: $imgDir}}) {
+      edges {
+        node {
+          id
+          name
+          childImageSharp {
+            original {
+              width
+              height
+            }
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp
+              originalName
+              originalImg
+            }
+          }
+        }
+      }
+    }
   }
 `
 
-// allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {eq: ""}}) {
-//   edges {
-//     node {
-//       id
-//       name
-//       childImageSharp {
-//         original {
-//           width
-//           height
-//         }
-//         fluid {
-//           ...GatsbyImageSharpFluid_withWebp
-//           originalName
-//           originalImg
-//         }
-//       }
-//     }
-//   }
-// }
-// }
