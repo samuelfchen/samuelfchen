@@ -20,31 +20,11 @@ const HeroWrapper = styled.div`
         flex-direction: vertical;
         // background-color: pink;    
         
-        // font-size: 16px;
-        
         .description {
             // Animations
-            // animation: fadein 1s; 
-            // animation-fill-mode: forwards;
-            // animation-delay: 3s;
-
             opacity: 0;
-            // transform: translateY(70px);
-            // position: fixed;
-
-            @keyframes fadein {
-                0%, 20% {
-                    transform: translateY(65px);
-                    opacity: 0;
-                }
-                100% {
-                transform: translateY(0);
-                opacity: 1;
-                }
-            }
-
             text-transform: uppercase;
-            line-height: 1em;
+
 
             // Css reset
             p {
@@ -60,15 +40,18 @@ const HeroWrapper = styled.div`
             @media screen and (max-width: 1000px) {
                 .rwd-break {
                     display: block;
+                    // margin-top: 10px;
                 }
             }
 
             .name {
-                line-height: 1.2em;
+                // display: block;
+                line-height: 1.1em;
                 font-size: 2.5em;
                 font-weight: 400;
                 letter-spacing: 0.1em;
-                margin-bottom: 0.25em;
+                margin-bottom: 0.5em;
+                // height: 100%;
             }
 
             .title {
@@ -76,7 +59,6 @@ const HeroWrapper = styled.div`
                 letter-spacing: 0.15em;
                 font-weight: 350;
                 margin-bottom: 1em;
-                // marign-top: 0;
             }
         }
 

@@ -23,7 +23,7 @@ const PhotoPage = ({
 }) => {
   
   const Albums = edges
-    .filter(edge => !!edge.node.frontmatter.date) 
+    .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => <AlbumLink key={edge.node.id} post={edge.node}/>)
 
   return (

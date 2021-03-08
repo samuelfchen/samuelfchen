@@ -17,7 +17,7 @@ const LayoutWrapper = styled.div`
         
         p {
             margin-bottom: 1em;
-            line-height: 1.25rem;
+            // line-height: 1.25rem;
             a {
                 color: black;
                 text-decoration: underline;

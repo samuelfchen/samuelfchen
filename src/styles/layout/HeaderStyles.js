@@ -79,7 +79,7 @@ const HeaderWrapper = styled.header`
                         }
 
                         &:last-child {
-                            margin-right: 10vw;
+                            margin-right: 0;
                         }
                     }
                     display: none;
