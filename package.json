@@ -11,7 +11,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "browser-monads": "^1.0.0",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.26.1",
+    "gatsby": "^2.32.12",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-catch-links": "^2.9.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -37,6 +37,7 @@
     "react-helmet": "^6.1.0",
     "react-image-lightbox": "^5.1.1",
     "react-images": "^1.2.0-beta.6",
+    "react-is": "16.8.0",
     "react-photo-gallery": "^8.0.0",
     "react-proximity-feedback": "^2.0.0",
     "react-spring": "^8.0.27",
@@ -44,9 +45,8 @@
     "smooth-scrollbar": "^8.5.3",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
-    "typography": "^0.16.19",
-    "react-is": "16.8.0",
-    "typescript": "2.7"
+    "typescript": "2.7",
+    "typography": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.2.1"

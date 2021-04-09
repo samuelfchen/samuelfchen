@@ -40,7 +40,7 @@ const AnimatedIconWrapper = styled.div`
         opacity: 0;
         transform: translateY(-0.25rem);
 
-        overflow: auto;
+        overflow: hidden;
     }
 `;
 
