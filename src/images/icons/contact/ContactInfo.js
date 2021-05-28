@@ -30,7 +30,7 @@ export default [
     {
         icon: resumeIcon,
         label: 'resume',
-        url: '#'
+        url: 'resume.pdf'
     }, 
     
     
