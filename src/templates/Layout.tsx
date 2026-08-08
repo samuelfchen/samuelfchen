@@ -6,7 +6,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 // styling
-import LayoutWrapper from '../styles/layout/LayoutStyles'
+import LayoutWrapper from './Layout.styles'
 import {Normalize} from 'styled-normalize'
 
 interface LayoutProps {

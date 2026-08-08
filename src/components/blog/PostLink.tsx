@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import PostLinkWrapper from '../../styles/blog/PostLinkStyles'
+import PostLinkWrapper from './PostLink.styles'
 import { BlogPost } from '../../utils/types'
 
 interface PostLinkProps {

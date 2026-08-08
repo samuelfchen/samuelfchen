@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Layout from './Layout'
 import Img from "gatsby-image"
 
-import BlogPostWrapper from '../styles/blog/BlogPostStyles'
+import BlogPostWrapper from './BlogPost.styles'
 
 interface BlogTemplateProps {
   data: {

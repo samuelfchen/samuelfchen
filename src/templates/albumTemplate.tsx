@@ -5,7 +5,7 @@ import Layout from './Layout'
 import Gallery from '../components/photo/Gallery'
 import 'react-image-lightbox/style.css';
 
-import PhotoAlbumWrapper from '../styles/photo/PhotoAlbumStyles'
+import PhotoAlbumWrapper from './PhotoAlbum.styles'
 
 interface AlbumTemplateProps {
   data: {

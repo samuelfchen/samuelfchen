@@ -2,7 +2,7 @@ import React from "react"
 
 //Import component
 import Layout from "../templates/Layout"
-import Hero from "../components/index/Hero"
+import Hero from "../components/common/Hero"
 import { Link } from "gatsby"
 
 const IndexPage = () => (

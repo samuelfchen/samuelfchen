@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import MeshWrapper from '../../styles/index/MeshStyles'
+import MeshWrapper from './Mesh.styles'
 
 import ProximityPolygon from './ProximityPolygon'
 

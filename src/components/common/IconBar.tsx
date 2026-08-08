@@ -1,6 +1,6 @@
 import React from "react"
 
-import IconBarWrapper from '../../styles/index/IconBarStyles'
+import IconBarWrapper from './IconBar.styles'
 import contact from '../../images/icons/contact/ContactInfo'
 import AnimatedIcon from './AnimatedIcon'
 

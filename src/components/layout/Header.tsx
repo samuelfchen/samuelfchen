@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from 'react';
 
-import HeaderWrapper from '../../styles/layout/HeaderStyles'
+import HeaderWrapper from './Header.styles'
 
 import blogIconURL from '../../images/icons/header/blog.svg'
 import photoIconURL from '../../images/icons/header/photo.svg'

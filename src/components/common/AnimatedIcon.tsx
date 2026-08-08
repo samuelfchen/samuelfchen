@@ -1,6 +1,6 @@
 import React from "react"
 
-import AnimatedIconWrapper from '../../styles/index/AnimatedIconStyles'
+import AnimatedIconWrapper from './AnimatedIcon.styles'
 
 interface AnimatedIconProps {
   icon: string

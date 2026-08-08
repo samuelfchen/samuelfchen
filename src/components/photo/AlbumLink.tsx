@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import AlbumLinkWrapper from '../../styles/photo/AlbumLinkStyles'
+import AlbumLinkWrapper from './AlbumLink.styles'
 import DynImage from "./DynImage"
 import { PhotoAlbum } from '../../utils/types'
 

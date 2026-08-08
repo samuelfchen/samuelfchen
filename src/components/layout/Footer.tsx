@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from 'react';
 
-import FooterWrapper from '../../styles/layout/FooterStyles'
+import FooterWrapper from './Footer.styles'
 
 const Footer = () => {
 

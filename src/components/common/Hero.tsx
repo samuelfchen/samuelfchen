@@ -3,7 +3,7 @@ import IconBar from "./IconBar"
 
 import { TweenMax } from 'gsap'
 
-import HeroWrapper from '../../styles/index/HeroStyles'
+import HeroWrapper from './Hero.styles'
 
 import Mesh from './Mesh'
 
