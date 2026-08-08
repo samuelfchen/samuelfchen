@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Pane from "./Pane";
 import Face from "./panes/Face";
 import Log from "./panes/Log";
+import type { GitInfo } from "../lib/git";
 
 const LINKS = [
   { name: "github", href: "https://github.com/samuelfchen" },
@@ -17,21 +18,28 @@ function slugOf(pathname: string): string {
   return clean === "" ? "index" : clean;
 }
 
-export default function Tmux({ children }: { children: React.ReactNode }) {
+export default function Tmux({
+  children,
+  git,
+}: {
+  children: React.ReactNode;
+  git: GitInfo;
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const slug = slugOf(pathname);
   const [tabs, setTabs] = useState<string[]>(["index"]);
-  const prevSlug = useRef<string | null>(null);
+  const [prevSlug, setPrevSlug] = useState<string | null>(null);
 
-  if (prevSlug.current !== slug) {
-    prevSlug.current = slug;
+  if (prevSlug !== slug) {
+    setPrevSlug(slug);
     setTabs((t) => (t.includes(slug) ? t : [...t, slug]));
   }
 
   const open = (s: string) => router.push(s === "index" ? "/" : `/${s}`);
 
   const close = (s: string) => {
+    if (s === "index") return;
     const i = tabs.indexOf(s);
     if (i === -1) return;
     const next = tabs.filter((x) => x !== s);
@@ -59,7 +67,7 @@ export default function Tmux({ children }: { children: React.ReactNode }) {
             </a>
           ))}
         </div>
-        <span className="tmx-host">macbook</span>
+        <span className="tmx-host">macbook-m1-pro</span>
       </div>
 
       <div className="tmx-panes">
@@ -68,7 +76,7 @@ export default function Tmux({ children }: { children: React.ReactNode }) {
             <Face />
           </Pane>
           <Pane>
-            <Log />
+            <Log branch={git.branch} log={git.log} />
           </Pane>
         </div>
         <div className="col-right">
@@ -94,17 +102,19 @@ export default function Tmux({ children }: { children: React.ReactNode }) {
                       </span>
                       <span className="nvim-ic"></span>
                       <span> {t}.md</span>
-                      <span
-                        className="nvim-close"
-                        role="button"
-                        aria-label={`close ${t}.md`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          close(t);
-                        }}
-                      >
-                        
-                      </span>
+                      {t !== "index" && (
+                        <span
+                          className="nvim-close"
+                          role="button"
+                          aria-label={`close ${t}.md`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            close(t);
+                          }}
+                        >
+                          
+                        </span>
+                      )}
                     </button>
                   </span>
                 ))}

@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --bg: #282c34;
   --bg-sunken: #21252b;
   --fg: #abb2bf;
@@ -99,7 +100,7 @@ main {
 
 .tmx-panes {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 1px;
   background: var(--orange);
   flex: 1;
@@ -119,6 +120,16 @@ main {
   display: grid;
   min-height: 0;
   min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .tmx-panes {
+    grid-template-columns: 1fr;
+  }
+
+  .col-left {
+    display: none;
+  }
 }
 
 .pane {
@@ -491,6 +502,13 @@ main {
 
 .log .meta {
   color: var(--muted);
+}
+
+.log-cmt {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding-left: 2em;
+  text-indent: -2em;
 }
 
 /* ── corners ────────────────────────────────────────────────────── */

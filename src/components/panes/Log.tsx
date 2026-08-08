@@ -1,28 +1,40 @@
-const COMMITS = [
-  ["4fc1376", "(HEAD → main)", "wip: align tooltips by position"],
-  ["5b67cc5", "", "add email icon → mailto:hi@samuelfchen.com"],
-  ["f639619", "", "fix tooltip overflow at viewport edges"],
-  ["80f05e8", "", "v2: terminal landing page"],
-  ["ef7dcc5", "", "initial commit (next)"],
-];
+type Commit = { hash: string; refs: string; subject: string };
 
-export default function Log() {
+function parseLog(log: string): Commit[] {
+  return log
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => {
+      const [hash = "", refs = "", subject = ""] = line.split("\x1f");
+      return { hash, refs, subject };
+    });
+}
+
+export default function Log({
+  branch,
+  log,
+}: {
+  branch: string;
+  log: string;
+}) {
+  const commits = parseLog(log);
+
   return (
     <div className="log">
       <div>
         <span className="pk-path">~/samuelfchen</span>{" "}
-        <span className="pk-name">main</span>
+        <span className="pk-name">{branch}</span>
       </div>
       <div>
         <span className="pk-arrow">❯</span>{" "}
-        <span className="pk-arrow">git</span> log --oneline --graph --decorate
+        <span className="pk-arrow">git</span> log --oneline --decorate -n 10
       </div>
-      {COMMITS.map(([hash, ref, msg], i) => (
-        <div key={i}>
-          <span className="graph">*</span>{" "}
-          <span className="meta">{hash}</span>
-          {ref && <span> <span className="ref">{ref}</span></span>}{" "}
-          <span className="msg">{msg}</span>
+      {commits.map((c, i) => (
+        <div className="log-cmt" key={i}>
+          <span className="graph">* </span>
+          <span className="meta">{c.hash}</span>
+          {c.refs && <span className="ref"> {c.refs}</span>}
+          <span className="msg"> {c.subject}</span>
         </div>
       ))}
       <div className="blink">▋</div>

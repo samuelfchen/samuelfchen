@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Tmux from "../components/Tmux";
+import { getGitInfo } from "../lib/git";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -44,16 +45,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const git = getGitInfo();
+
   return (
     <html lang="en" className={jetbrainsMono.variable}>
-      <body>
+      <body style={{ backgroundColor: "#282c34" }}>
         <main>
-          <Tmux>{children}</Tmux>
+          <Tmux git={git}>{children}</Tmux>
 
           <div className="corner left">
             <a
