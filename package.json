@@ -8,6 +8,10 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^5.5.0",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/styled-components": "^5.1.36",
     "babel-plugin-styled-components": "^1.12.0",
     "browser-monads": "^1.0.0",
     "dotenv": "^8.2.0",
@@ -30,7 +34,6 @@
     "gatsby-transformer-remark": "^6.16.0",
     "gatsby-transformer-sharp": "^5.16.0",
     "gsap": "^3.6.0",
-    "sass": "^1.102.0",
     "prop-types": "^15.7.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -42,15 +45,16 @@
     "react-proximity-feedback": "^2.0.0",
     "react-spring": "^8.0.27",
     "react-typography": "^0.16.19",
+    "sass": "^1.102.0",
     "smooth-scrollbar": "^8.5.3",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
-    "typescript": "2.7",
+    "typescript": "^5.9.3",
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "2.2.1",
-    "ajv": "^8.20.0"
+    "ajv": "^8.20.0",
+    "prettier": "2.2.1"
   },
   "overrides": {
     "ajv": "^8.20.0",

@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import MeshWrapper from '../../styles/index/MeshStyles'
@@ -8,9 +8,9 @@ import ProximityPolygon from './ProximityPolygon'
 import { useProximityFeedback } from 'react-proximity-feedback'
 
 
-const Mesh = (props) => {
-  const pathRef = createRef()
-  const [pathLength, setPathLength] = useState()
+const Mesh = (props: React.SVGProps<SVGSVGElement>) => {
+  const pathRef = React.useRef<SVGPathElement>(null)
+  const [pathLength, setPathLength] = useState<number>()
 
   useEffect(() => {
     if (pathRef.current) {

@@ -1,13 +1,30 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 
 import styled from 'styled-components'
 
 // Note: You can change "images" to whatever you'd like.
 
+interface DynImageProps {
+  filename?: string
+  alt?: string
+}
 
-const Image = props => (
+interface DynImageData {
+  images: {
+    edges: Array<{
+      node: {
+        relativePath: string
+        childImageSharp: {
+          fluid: FluidObject
+        }
+      }
+    }>
+  }
+}
+
+const Image = (props: DynImageProps) => (
   <StaticQuery
     query={graphql`
       query {
@@ -28,15 +45,14 @@ const Image = props => (
         }
       }
     `}
-    render={data => {
+    render={(data: DynImageData) => {
       const image = data.images.edges.find(n => {
-        return n.node.relativePath.includes(props.filename);
+        return n.node.relativePath.includes(props.filename || '');
       });
       if (!image) {
         return null;
       }
 
-      //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
       return (
           <Img alt={props.alt} fluid={{...image.node.childImageSharp.fluid, aspectRatio: 10 / 4}} />
       );

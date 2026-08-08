@@ -3,23 +3,25 @@ import { Link } from "gatsby"
 
 import AlbumLinkWrapper from '../../styles/photo/AlbumLinkStyles'
 import DynImage from "./DynImage"
+import { PhotoAlbum } from '../../utils/types'
 
-const AlbumLink = ({ post, data }) => {
-  const featuredImage = post.frontmatter.slug
-  console.log(featuredImage)
+interface AlbumLinkProps {
+  post: PhotoAlbum
+}
+
+const AlbumLink = ({ post }: AlbumLinkProps) => {
 
   return (
     <AlbumLinkWrapper>
       <Link to={post.frontmatter.slug}>
         <div className="outer-image">
           <div className="image">
-            {/* <img alt="" src={post.frontmatter.featuredImage}/> */}
             <DynImage filename={post.frontmatter.slug}/>
           </div>
         </div>
         <div className='description'>
-          <h2>{post.frontmatter.title} | {post.frontmatter.date}</h2> 
-          <p>{post.frontmatter.subtitle}</p> 
+          <h2>{post.frontmatter.title} | {post.frontmatter.date}</h2>
+          <p>{post.frontmatter.subtitle}</p>
         </div>
       </Link>
     </AlbumLinkWrapper>

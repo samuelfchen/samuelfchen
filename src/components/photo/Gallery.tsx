@@ -1,11 +1,31 @@
 import styled from "styled-components"
 import React, { useState, useCallback } from "react"
-import Gallery from 'react-photo-gallery'
-import Img from 'gatsby-image'
+import Gallery, { PhotoProps, RenderImageProps } from 'react-photo-gallery'
+import Img, { FluidObject } from 'gatsby-image'
 
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css';
 
+interface AlbumFluid extends FluidObject {
+  originalName?: string
+  originalImg?: string
+}
+
+interface AlbumImageNode {
+  childImageSharp: {
+    original: {
+      width: number
+      height: number
+    }
+    fluid: AlbumFluid
+  }
+}
+
+interface AlbumImageEdge {
+  node: AlbumImageNode
+}
+
+type GalleryPhoto = PhotoProps<{ fluid: AlbumFluid }>
 
 const ImageWrapper = styled.div`
 box-shadow: -1px 3px 6px 1px rgba(0, 0, 0, 0.3);
@@ -24,48 +44,46 @@ div {
 }
 `
 
-const GatsbyImage = ({ index, onClick, photo, margin }) => (
+const GatsbyImage = ({ index, onClick, photo, margin }: RenderImageProps<{ fluid: AlbumFluid }>) => (
 <ImageWrapper
  style={{ margin, height: photo.height, width: photo.width }}
- onClick={e => onClick(e, { index, photo })}
+ onClick={e => onClick && onClick(e, { index, photo } as any)}
 >
  <Img
-   fixed={typeof window === 'undefined' ? { src: {} } : undefined}
+   fixed={typeof window === 'undefined' ? ({ src: {} } as any) : undefined}
    fluid={photo.fluid}
  />
 </ImageWrapper>
 )
 
-const fileNumber = file =>
-  Number(file.node.childImageSharp.fluid.originalName.replace(/[a-z]/gi, ''))
+const fileNumber = (file: AlbumImageNode) =>
+  Number(file.childImageSharp.fluid.originalName?.replace(/[a-z]/gi, ''))
 
-const getImages = imageArray => {
+const getImages = (imageArray: AlbumImageEdge[]): GalleryPhoto[] => {
   return [...imageArray]
-    .sort((a, b) => fileNumber(b) - fileNumber(a))
+    .sort((a, b) => fileNumber(b.node) - fileNumber(a.node))
     .map(({ node: { childImageSharp: { fluid, original } } }) => ({
       height: original.height,
       width: original.width,
-      src: fluid.originalImg,
+      src: fluid.originalImg || fluid.src,
       srcSet: fluid.srcSet,
       fluid
-    })) 
+    }))
 }
 
 
-const GatsbyGallery = ({photosQuery, ...rest}) => {
-  
-  const photos = getImages(photosQuery);
+const GatsbyGallery = ({ photosQuery, ...rest }: { photosQuery: AlbumImageEdge[] }) => {
 
-  // console.log(photos)
+  const photos = getImages(photosQuery);
 
   // Lightbox stuff
   const [currentImage, setCurrentImage] = useState(0);
   const [isOpen, setViewerIsOpen] = useState(false);
 
-  const openLightbox = useCallback((event, { photo, index }) => {
+  const openLightbox = useCallback((event: React.MouseEvent, { photo, index }: any) => {
   setCurrentImage(index);
   setViewerIsOpen(true);
-  }, []); 
+  }, []);
 
   const closeLightbox = () => {
   setCurrentImage(0);
@@ -80,7 +98,7 @@ const GatsbyGallery = ({photosQuery, ...rest}) => {
   setCurrentImage((currentImage + photos.length - 1) % photos.length)
   }
 
-  
+
   return (
     <>
       <Gallery photos={photos} onClick={openLightbox} renderImage={GatsbyImage} />

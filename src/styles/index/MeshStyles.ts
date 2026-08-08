@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const MeshWrapper = styled.div`
+const MeshWrapper = styled.div<{ pathLength?: number }>`
 position: relative; 
 height: 90%;
 width: 80%;

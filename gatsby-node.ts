@@ -1,3 +1,6 @@
+import * as path from 'path'
+import type { GatsbyNode } from 'gatsby'
+
 const hasCloudinaryConfig = [
   process.env.CLOUDINARY_CLOUD_NAME,
   process.env.CLOUDINARY_API_KEY,
@@ -6,7 +9,7 @@ const hasCloudinaryConfig = [
 
 // When Cloudinary isn't configured (e.g. local development), provide an empty
 // CloudinaryMedia type so the photo queries still validate but return nothing.
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions }) => {
   if (hasCloudinaryConfig) return
   const { createTypes } = actions
   createTypes(`
@@ -19,12 +22,29 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+interface MarkdownNode {
+  id: string
+  frontmatter: {
+    slug: string
+    featuredImage: string
+  }
+}
+
+interface QueryResult {
+  errors?: unknown
+  data: {
+    allMarkdownRemark: {
+      edges: Array<{ node: MarkdownNode }>
+    }
+  }
+}
+
+export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = require.resolve(`./src/templates/blogTemplate.js`)
+  const blogPostTemplate = path.resolve(process.cwd(), `src/templates/blogTemplate.tsx`)
 
-  const blogRes = await graphql(`
+  const blogRes = (await graphql(`
     {
       allMarkdownRemark(
         filter: { frontmatter: {type: {eq: "blogPost" }}}
@@ -42,7 +62,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
     }
-  `)
+  `)) as QueryResult
 
   // Handle errors
   if (blogRes.errors) {
@@ -64,10 +84,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   //===========================================================================
 
-  // Albums 
-  const albumTemplate = require.resolve(`./src/templates/albumTemplate.js`)
+  // Albums
+  const albumTemplate = path.resolve(process.cwd(), `src/templates/albumTemplate.tsx`)
 
-  const albumRes = await graphql(`
+  const albumRes = (await graphql(`
     {
       allMarkdownRemark(
         filter: { frontmatter: {type: {eq: "photoAlbum" }}}
@@ -85,7 +105,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
     }
-  `)
+  `)) as QueryResult
 
   // Handle errors
   if (albumRes.errors) {

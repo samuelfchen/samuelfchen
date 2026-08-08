@@ -2,15 +2,19 @@ import React from "react"
 
 import AnimatedIconWrapper from '../../styles/index/AnimatedIconStyles'
 
-const AnimatedIcon = (props) => {
+interface AnimatedIconProps {
+  icon: string
+  label: string
+  url: string
+}
+
+const AnimatedIcon = (props: AnimatedIconProps) => {
     return (
         <AnimatedIconWrapper>
-            <a 
-                href={ props.url } 
-                target="_blank" 
+            <a
+                href={ props.url }
+                target="_blank"
                 rel="noreferrer"
-                // onMouseEnter={() => showLabel(label)}
-                // onMouseLeave={() => hideLabel(label)}
             >
                 <img src={ props.icon } alt={ props.label }/>
             </a>

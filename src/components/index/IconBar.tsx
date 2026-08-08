@@ -1,7 +1,6 @@
 import React from "react"
 
 import IconBarWrapper from '../../styles/index/IconBarStyles'
-
 import contact from '../../images/icons/contact/ContactInfo'
 import AnimatedIcon from './AnimatedIcon'
 
@@ -10,7 +9,7 @@ const IconBar = () => {
         <IconBarWrapper numIcons={contact.length}>
             {
                 contact.map((imageData) => {
-                    return <AnimatedIcon icon={imageData.icon} label={imageData.label} url={imageData.url} key={imageData.id}/>
+                    return <AnimatedIcon icon={imageData.icon} label={imageData.label} url={imageData.url} key={imageData.label}/>
                 })
             }
         </IconBarWrapper>

@@ -2,27 +2,22 @@ import React from "react"
 import { graphql } from 'gatsby'
 
 //Import component
-import Layout from "../templates/Layout.js"
+import Layout from "../templates/Layout"
 
 import AlbumLink from "../components/photo/AlbumLink"
+import { PhotoAlbum } from '../utils/types'
 
-// const PhotoPage = () => {
-//   return (
-//     <Layout>
-//       <h1>
-//         🚧 Photos 🚧
-//       </h1>
-//     </Layout>
-//   );
-// }
-
-const PhotoPage = ({
+interface PhotoPageProps {
   data: {
-    allMarkdownRemark: { edges },
-  },
-}) => {
-  
-  const Albums = edges
+    allMarkdownRemark: {
+      edges: Array<{ node: PhotoAlbum }>
+    }
+  }
+}
+
+const PhotoPage = ({ data }: PhotoPageProps) => {
+
+  const Albums = data.allMarkdownRemark.edges
     .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => <AlbumLink key={edge.node.id} post={edge.node}/>)
 
@@ -58,4 +53,3 @@ export const pageQuery = graphql`
     }
   }
 `
-

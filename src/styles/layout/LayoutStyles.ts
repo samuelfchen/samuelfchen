@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LayoutWrapper = styled.div`    
+const LayoutWrapper = styled.div<{ limitWidth?: string }>`    
     main {        
         // position: relative;
         // background-color: pink;

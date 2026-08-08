@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const IconBarWrapper = styled.div`
+const IconBarWrapper = styled.div<{ numIcons?: number }>`
     width: ${props => props.numIcons * 3}rem;
     display: flex;
     justify-content: space-between;

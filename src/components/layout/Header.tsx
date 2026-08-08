@@ -8,19 +8,21 @@ import photoIconURL from '../../images/icons/header/photo.svg'
 
 
 const Header = () => {
-  let [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       if (
         document.body.scrollTop > 30 ||
         document.documentElement.scrollTop > 30
       ) {
-        setIsScrolled((isScrolled = true));
+        setIsScrolled(true);
       } else {
-        setIsScrolled((isScrolled = false));
+        setIsScrolled(false);
       }
-    });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (

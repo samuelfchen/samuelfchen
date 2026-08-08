@@ -6,13 +6,30 @@ import Img from "gatsby-image"
 
 import BlogPostWrapper from '../styles/blog/BlogPostStyles'
 
-export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html, file } = markdownRemark
+interface BlogTemplateProps {
+  data: {
+    markdownRemark: {
+      html: string
+      frontmatter: {
+        date: string
+        slug: string
+        title: string
+        subtitle: string
+      }
+    }
+    file: {
+      childImageSharp: {
+        fluid: any
+      }
+    }
+  }
+}
 
-  let featuredImgFluid = data.file.childImageSharp.fluid
+export default function Template({ data }: BlogTemplateProps) {
+  const { markdownRemark } = data
+  const { frontmatter, html } = markdownRemark
+
+  const featuredImgFluid = data.file.childImageSharp.fluid
   return (
     <Layout limitWidth="true">
       <BlogPostWrapper>

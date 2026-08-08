@@ -1,16 +1,20 @@
 import React from "react"
-import PropTypes from "prop-types"
 
-import Header from "../components/layout/Header.js"
+import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 // styling
-import LayoutWrapper from '../styles/layout/LayoutStyles.js'
+import LayoutWrapper from '../styles/layout/LayoutStyles'
 import {Normalize} from 'styled-normalize'
 
-const Layout = ({ children, limitWidth }) => {
+interface LayoutProps {
+  children: React.ReactNode
+  limitWidth?: string
+}
+
+const Layout = ({ children, limitWidth }: LayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -21,8 +25,6 @@ const Layout = ({ children, limitWidth }) => {
     }
   `)
 
-  
-
   return (
     <>
       <LayoutWrapper limitWidth={limitWidth}>
@@ -31,7 +33,6 @@ const Layout = ({ children, limitWidth }) => {
         <Helmet>
           <title>{data.site.siteMetadata.title}</title>
         </Helmet>
-        
 
         <main>
           <Header/>
@@ -39,14 +40,9 @@ const Layout = ({ children, limitWidth }) => {
         </main>
         <Footer/>
 
-
       </LayoutWrapper>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

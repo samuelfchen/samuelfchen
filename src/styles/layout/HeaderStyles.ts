@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header<{ isScrolled?: boolean }>`
     position: fixed;
     z-index: 100;
     background-color: white;

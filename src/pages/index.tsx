@@ -1,10 +1,9 @@
 import React from "react"
 
 //Import component
-import Layout from "../templates/Layout.js"
-import Hero from "../components/index/Hero.js"
+import Layout from "../templates/Layout"
+import Hero from "../components/index/Hero"
 import { Link } from "gatsby"
-
 
 const IndexPage = () => (
   <>
@@ -13,7 +12,7 @@ const IndexPage = () => (
       <h1>Whats up?</h1>
       <p>👋 Hey there, I'm Sam! Thanks for checking out my website.</p>
       <p>I'm currently in my third year, studying the Bachelor of Advanced Computing at the University of Sydney. </p>
-      <p>I take <Link to="/photo">📷 photos</Link> and write <Link to="/blog">👨‍💻 code</Link> in my spare time.</p> 
+      <p>I take <Link to="/photo">📷 photos</Link> and write <Link to="/blog">👨‍💻 code</Link> in my spare time.</p>
       <p>
         Some of my other passing interests incude
         <ul>
@@ -22,9 +21,9 @@ const IndexPage = () => (
           <li>Gaming</li>
           <li>Trying to <a target="none" href="https://www.notion.so/sfchen/To-Read-01343436f7b44a19ba6ed3ff666ca7f8">read more</a></li>
           <li>Wasting time on Youtube</li>
-        </ul>         
+        </ul>
       </p>
-      
+
     </Layout>
   </>
 )

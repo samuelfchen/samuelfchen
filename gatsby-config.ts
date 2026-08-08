@@ -1,4 +1,6 @@
-require('dotenv').config();
+import 'dotenv/config'
+
+import type { GatsbyConfig } from 'gatsby'
 
 const hasCloudinaryConfig = [
   process.env.CLOUDINARY_CLOUD_NAME,
@@ -6,7 +8,7 @@ const hasCloudinaryConfig = [
   process.env.CLOUDINARY_API_SECRET,
 ].every(Boolean);
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: `Samuel Chen`,
   },
@@ -69,15 +71,6 @@ module.exports = {
           },
         }]
       : []),
-    // {
-    //   resolve: 'gatsby-transformer-cloudinary',
-    //   options: {
-    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    //     apiKey: process.env.CLOUDINARY_API_KEY,
-    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
-    //     uploadFolder: 'gatsby-cloudinary',
-    //   }
-    // },
     // One liners
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
@@ -86,6 +79,8 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-mdx`,
-    'gatsby-plugin-svgr',    
+    'gatsby-plugin-svgr',
   ],
 }
+
+export default config

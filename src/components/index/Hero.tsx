@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react"
-import IconBar from "./IconBar.js"
+import IconBar from "./IconBar"
 
 import { TweenMax } from 'gsap'
 
@@ -10,11 +10,10 @@ import Mesh from './Mesh'
 import down from '../../images/icons/down.svg'
 
 const Hero = () => {
-    let imageItem = useRef(null);
-    let heroItem = useRef(null);
-    
+    let heroItem = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        TweenMax.fromTo(heroItem, 1, {
+        TweenMax.fromTo(heroItem.current, 1, {
             y: 40,
             opacity: 0
         }, {
@@ -22,12 +21,12 @@ const Hero = () => {
             opacity: 1,
             delay: 0.5
         })
-    })
+    }, [])
 
     return (
         <HeroWrapper>
             <div className="hero-content">
-                <div className="description" ref={el => {heroItem = el}}>
+                <div className="description" ref={heroItem}>
                     <div className="name">
                         <p>samuel <br className="rwd-break"/>chen</p>
                     </div>
@@ -45,8 +44,8 @@ const Hero = () => {
                     <Mesh/>
                 </div>
             </div>
-            
-            <div className="arrow-down"> 
+
+            <div className="arrow-down">
                 <img src={down} alt="down arrow"/>
             </div>
         </HeroWrapper>
