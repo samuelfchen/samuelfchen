@@ -1,16 +1,36 @@
 import React from "react"
 
-//Import component
 import Layout from "../templates/Layout"
+
+interface Project {
+  name: string
+  description: string
+  url?: string
+}
+
+const projects: Project[] = [
+  {
+    name: "samuelfchen.com",
+    description: "This site — a Gatsby-powered personal site and photo journal.",
+    url: "/",
+  },
+]
 
 const ProjectPage = () => (
   <Layout>
-    <h1>
-      Projects
-    </h1>
-    <p>
-    I'm baby subway tile vexillologist pinterest meh polaroid hoodie portland celiac ugh. IPhone vegan scenester mixtape vaporware. Irony taiyaki meggings palo santo, subway tile marfa quinoa prism salvia live-edge leggings banh mi. Irony master cleanse unicorn kombucha typewriter cred franzen gochujang portland normcore. Artisan iPhone typewriter hammock, fam pabst slow-carb hot chicken pickled glossier deep v scenester cornhole VHS.
-    </p>
+    <h1>Projects</h1>
+    {projects.map(project => (
+      <article key={project.name}>
+        <h2>
+          {project.url ? (
+            <a href={project.url}>{project.name}</a>
+          ) : (
+            project.name
+          )}
+        </h2>
+        <p>{project.description}</p>
+      </article>
+    ))}
   </Layout>
 )
 
