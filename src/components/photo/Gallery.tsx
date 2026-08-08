@@ -52,6 +52,7 @@ const GatsbyImage = ({ index, onClick, photo, margin }: RenderImageProps<{ fluid
  <Img
    fixed={typeof window === 'undefined' ? ({ src: {} } as any) : undefined}
    fluid={photo.fluid}
+   alt={photo.fluid.originalName || 'album photo'}
  />
 </ImageWrapper>
 )

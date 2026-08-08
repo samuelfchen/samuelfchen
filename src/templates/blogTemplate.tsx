@@ -37,7 +37,7 @@ export default function Template({ data }: BlogTemplateProps) {
           <h1>{frontmatter.title}</h1>
           <h2>{frontmatter.subtitle}</h2>
           <h5>{frontmatter.date}</h5>
-          <Img fluid={featuredImgFluid} />
+          <Img fluid={featuredImgFluid} alt={frontmatter.title} />
         </div>
 
         <div

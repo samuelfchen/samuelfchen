@@ -16,7 +16,7 @@ const AlbumLink = ({ post }: AlbumLinkProps) => {
       <Link to={post.frontmatter.slug}>
         <div className="outer-image">
           <div className="image">
-            <DynImage filename={post.frontmatter.slug}/>
+            <DynImage filename={post.frontmatter.slug} alt={post.frontmatter.title} />
           </div>
         </div>
         <div className='description'>
