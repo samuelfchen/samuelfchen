@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 //Import component
 import Layout from "../templates/Layout"
 import PostLink from "../components/blog/PostLink"
+import Seo from "../components/seo"
 import { BlogPost } from '../utils/types'
 
 interface BlogPageProps {
@@ -33,6 +34,8 @@ const BlogPage = ({ data }: BlogPageProps) => {
 }
 
 export default BlogPage
+
+export const Head = () => <Seo title="Blog" />
 
 export const pageQuery = graphql`
   query {

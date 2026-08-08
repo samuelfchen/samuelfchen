@@ -4,6 +4,7 @@ import React from "react"
 import Layout from "../templates/Layout"
 import Hero from "../components/common/Hero"
 import { Link } from "gatsby"
+import Seo from "../components/seo"
 
 const IndexPage = () => (
   <>
@@ -29,3 +30,5 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+export const Head = () => <Seo />

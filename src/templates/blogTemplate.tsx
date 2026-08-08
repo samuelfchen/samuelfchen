@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from './Layout'
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
+import Seo from "../components/seo"
 
 import BlogPostWrapper from './BlogPost.styles'
 
@@ -48,6 +49,10 @@ export default function Template({ data }: BlogTemplateProps) {
     </Layout>
   )
 }
+
+export const Head = ({ data }: BlogTemplateProps) => (
+  <Seo title={data.markdownRemark.frontmatter.title} />
+)
 
 export const pageQuery = graphql`
   query($slug: String!, $imgUrl: String) {

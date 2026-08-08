@@ -11,6 +11,7 @@ const hasCloudinaryConfig = [
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Samuel Chen`,
+    description: `Personal site of Samuel Chen — photography, writing, and projects.`,
   },
   plugins: [
     // File system
@@ -32,11 +33,11 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Samuel Chen`,
+        short_name: `samuelfchen`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ffffff`,
+        theme_color: `#000000`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
@@ -74,7 +75,6 @@ const config: GatsbyConfig = {
     // One liners
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

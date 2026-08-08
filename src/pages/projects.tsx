@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../templates/Layout"
+import Seo from "../components/seo"
 
 interface Project {
   name: string
@@ -35,3 +36,5 @@ const ProjectPage = () => (
 )
 
 export default ProjectPage
+
+export const Head = () => <Seo title="Projects" />

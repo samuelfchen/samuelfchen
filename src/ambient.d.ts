@@ -5,8 +5,6 @@ declare module "*.svg" {
 
 declare module "*.css"
 
-declare module "react-helmet"
-
 declare module "typography" {
   interface GoogleFont {
     name: string

@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from "../templates/Layout"
 
 import AlbumLink from "../components/photo/AlbumLink"
+import Seo from "../components/seo"
 import { PhotoAlbum } from '../utils/types'
 
 interface PhotoPageProps {
@@ -34,6 +35,8 @@ const PhotoPage = ({ data }: PhotoPageProps) => {
 }
 
 export default PhotoPage
+
+export const Head = () => <Seo title="Photography" />
 
 export const pageQuery = graphql`
   query {

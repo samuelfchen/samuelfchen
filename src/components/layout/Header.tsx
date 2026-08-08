@@ -36,6 +36,8 @@ const Header = () => {
 
         <div className="navigation">
           <nav className='desktop'>
+            <Link to="/about" activeClassName="active">about</Link>
+            <Link to="/projects" activeClassName="active">projects</Link>
             <Link to="/photo" activeClassName="active">photography</Link>
             <Link to="/blog" activeClassName="active">blog</Link>
           </nav>

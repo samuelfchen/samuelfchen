@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from './Layout'
 import Gallery from '../components/photo/Gallery'
+import Seo from "../components/seo"
 import 'react-image-lightbox/style.css';
 
 import PhotoAlbumWrapper from './PhotoAlbum.styles'
@@ -50,6 +51,10 @@ export default function Template({ data }: AlbumTemplateProps) {
     </Layout>
   )
 }
+
+export const Head = ({ data }: AlbumTemplateProps) => (
+  <Seo title={data.markdownRemark.frontmatter.title} />
+)
 
 export const pageQuery = graphql`
   query($slug: String!, $imgDirRegex: String!, $imgDir: String!) {
