@@ -39,6 +39,7 @@ export default function Page() {
         <a
           className="icon"
           data-tooltip="github"
+          data-align="left"
           href="https://github.com/samuelfchen"
           target="_blank"
           rel="noopener noreferrer"
@@ -100,6 +101,7 @@ export default function Page() {
         <a
           className="v1"
           data-tooltip="2021 — My first portfolio website, built in GatsbyJS"
+          data-align="right"
           href="https://v1.samuelfchen.com"
         >
           v1

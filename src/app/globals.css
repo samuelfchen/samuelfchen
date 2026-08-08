@@ -135,12 +135,12 @@ main {
   z-index: 10;
 }
 
-.corner.left [data-tooltip]::after {
+[data-tooltip][data-align="left"]::after {
   left: 0;
   transform: none;
 }
 
-.corner.right [data-tooltip]::after {
+[data-tooltip][data-align="right"]::after {
   left: auto;
   right: 0;
   transform: none;
