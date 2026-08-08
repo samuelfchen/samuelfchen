@@ -76,6 +76,24 @@ export default function Page() {
             <circle cx="4" cy="4" r="2" />
           </svg>
         </a>
+        <a
+          className="icon"
+          data-tooltip="email"
+          href="mailto:hi@samuelfchen.com"
+          aria-label="email"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </a>
       </div>
 
       <div className="corner right">
