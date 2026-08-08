@@ -98,6 +98,26 @@ main {
   color: var(--muted);
 }
 
+.tmx-icon {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tmx-host {
+    display: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .tmx-label {
+    display: none;
+  }
+
+  .tmx-icon {
+    display: inline;
+  }
+}
+
 .tmx-panes {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -297,72 +317,97 @@ main {
   padding: 4px 12px 8px;
 }
 
+.nvim-buf:focus {
+  outline: none;
+}
+
+.nvim-buf {
+  position: relative;
+}
+
+.nvim-buf .nvim-cursor {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1ch;
+  height: 1.5em;
+  background: var(--fg);
+  color: var(--bg);
+  text-align: center;
+  pointer-events: none;
+}
+
+.nvim-buf.cursor-on .nvim-cursor {
+  display: block;
+}
+
 .nvim-md {
   height: 100%;
   overflow-y: auto;
   color: var(--fg);
   line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
   scrollbar-width: thin;
 }
 
-.nvim-md h1,
-.nvim-md h2,
-.nvim-md h3,
-.nvim-md h4 {
-  margin: 0.4em 0 0.2em;
+.nvim-md .md-row {
+  min-height: 1.5em;
+}
+
+.nvim-md .md-row.h1,
+.nvim-md .md-row.h2,
+.nvim-md .md-row.h3,
+.nvim-md .md-row.h4,
+.nvim-md .md-row.h5,
+.nvim-md .md-row.h6 {
   font-weight: 700;
-  font-size: 1rem;
 }
 
-.nvim-md h1 {
-  color: var(--cyan);
+.nvim-md .md-row.h1,
+.nvim-md .md-row.h4,
+.nvim-md .md-row.h5,
+.nvim-md .md-row.h6 {
+  color: var(--red);
 }
 
-.nvim-md h2 {
-  color: var(--blue);
-}
-
-.nvim-md h3 {
+.nvim-md .md-row.h2 {
   color: var(--purple);
 }
 
-.nvim-md h1::before {
-  content: "# ";
+.nvim-md .md-row.h3 {
+  color: var(--orange);
+}
+
+.nvim-md .tok-head {
   color: var(--muted);
 }
 
-.nvim-md h2::before {
-  content: "## ";
+.nvim-md .tok-list {
+  color: var(--purple);
+}
+
+.nvim-md .tok-quote {
+  color: var(--cyan);
+}
+
+.nvim-md .tok-hr {
   color: var(--muted);
 }
 
-.nvim-md h3::before {
-  content: "### ";
+.nvim-md .tok-fence,
+.nvim-md .tok-code,
+.nvim-md .tok-code-block {
+  color: var(--yellow);
+}
+
+.nvim-md .tok-delim {
   color: var(--muted);
 }
 
-.nvim-md p {
-  margin: 0.2em 0;
-}
-
-.nvim-md ul,
-.nvim-md ol {
-  margin: 0.2em 0;
-  padding-left: 1.6em;
-}
-
-.nvim-md ul {
-  list-style: none;
-  padding-left: 1.2em;
-}
-
-.nvim-md ul li::before {
-  content: "- ";
-  color: var(--muted);
-}
-
-.nvim-md li::marker {
-  color: var(--muted);
+.nvim-md .tok-url {
+  color: var(--dim);
 }
 
 .nvim-md a {
@@ -381,59 +426,6 @@ main {
 
 .nvim-md em {
   color: var(--purple);
-}
-
-.nvim-md code {
-  color: var(--yellow);
-  background: rgba(171, 178, 191, 0.07);
-  padding: 0 0.2em;
-}
-
-.nvim-md pre {
-  background: var(--bg-sunken);
-  border: 1px solid var(--border);
-  padding: 0.4em 0.6em;
-  margin: 0.4em 0;
-  overflow-x: auto;
-}
-
-.nvim-md pre code {
-  background: none;
-  padding: 0;
-  color: var(--fg);
-}
-
-.nvim-md blockquote {
-  margin: 0.4em 0;
-  padding-left: 0.8em;
-  border-left: 2px solid var(--muted);
-  color: var(--dim);
-}
-
-.nvim-md hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0.5em 0;
-}
-
-.nvim-md table {
-  border-collapse: collapse;
-  margin: 0.4em 0;
-}
-
-.nvim-md th,
-.nvim-md td {
-  border: 1px solid var(--border);
-  padding: 2px 8px;
-}
-
-.nvim-md th {
-  color: #ffffff;
-}
-
-.nvim-md .cursorline {
-  background: rgba(171, 178, 191, 0.06);
-  line-height: 1.5;
 }
 
 .nvim-status {
@@ -462,6 +454,21 @@ main {
 
 .nvim-status .st-pos {
   color: var(--muted);
+}
+
+.nvim-hint {
+  padding: 0 10px 4px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .nvim-hint {
+    display: none;
+  }
 }
 
 /* ── shell pane ─────────────────────────────────────────────────── */
@@ -530,14 +537,17 @@ main {
 }
 
 .v1 {
-  color: rgba(171, 178, 191, 0.6);
+  color: var(--bg);
   font-size: 0.85rem;
   text-decoration: none;
-  transition: color 0.15s ease;
+  font-family: inherit;
+  padding: 0.2rem 0.65rem;
+  background: var(--green);
+  transition: filter 0.15s ease;
 }
 
 .v1:hover {
-  color: var(--fg);
+  filter: brightness(1.15);
 }
 
 .icon {
@@ -591,8 +601,19 @@ main {
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  .corner {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pane.active .blink {
+    animation: none;
+    opacity: 1;
+  }
+
+  .nvim-buf .nvim-cursor {
     animation: none;
     opacity: 1;
   }

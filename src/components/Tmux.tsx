@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Pane from "./Pane";
+import VimNav from "./VimNav";
 import Face from "./panes/Face";
 import Log from "./panes/Log";
 import type { GitInfo } from "../lib/git";
 
 const LINKS = [
-  { name: "github", href: "https://github.com/samuelfchen" },
-  { name: "linkedin", href: "https://linkedin.com/in/samuelfchen" },
-  { name: "email", href: "mailto:hi@samuelfchen.com" },
+  { name: "github", icon: "\uf09b", href: "https://github.com/samuelfchen" },
+  { name: "linkedin", icon: "\uf08c", href: "https://linkedin.com/in/samuelfchen" },
+  { name: "email", icon: "\uf0e0", href: "mailto:hi@samuelfchen.com" },
 ];
 
 function slugOf(pathname: string): string {
@@ -30,13 +31,50 @@ export default function Tmux({
   const slug = slugOf(pathname);
   const [tabs, setTabs] = useState<string[]>(["index"]);
   const [prevSlug, setPrevSlug] = useState<string | null>(null);
+  const [pos, setPos] = useState({ row: 1, col: 1 });
+  const tabsRef = useRef<HTMLDivElement | null>(null);
 
   if (prevSlug !== slug) {
     setPrevSlug(slug);
     setTabs((t) => (t.includes(slug) ? t : [...t, slug]));
   }
 
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    let raf = 0;
+    const check = () => {
+      if (el.scrollWidth > el.clientWidth + 1) {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          setTabs((cur) => {
+            const target = cur.find((t) => t !== "index" && t !== slug);
+            return target ? cur.filter((t) => t !== target) : cur;
+          });
+        });
+      }
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", check);
+    };
+  }, [tabs, slug]);
+
   const open = (s: string) => router.push(s === "index" ? "/" : `/${s}`);
+
+  const prevTab = () => {
+    const i = tabs.indexOf(slug);
+    if (i <= 0) return;
+    open(tabs[i - 1]);
+  };
+
+  const nextTab = () => {
+    const i = tabs.indexOf(slug);
+    if (i < 0 || i >= tabs.length - 1) return;
+    open(tabs[i + 1]);
+  };
 
   const close = (s: string) => {
     if (s === "index") return;
@@ -63,7 +101,12 @@ export default function Tmux({
               target="_blank"
               rel="noopener noreferrer"
             >
-              {i + 1}:{l.name}
+              <span className="tmx-label">
+                {i + 1}:{l.name}
+              </span>
+              <span className="tmx-icon" aria-hidden="true">
+                {l.icon}
+              </span>
             </a>
           ))}
         </div>
@@ -82,7 +125,7 @@ export default function Tmux({
         <div className="col-right">
           <Pane active>
             <div className="nvim" aria-label={`nvim editing ${slug}.md`}>
-              <div className="nvim-tabs">
+              <div className="nvim-tabs" ref={tabsRef}>
                 {tabs.map((t, i) => (
                   <span key={t}>
                     {i > 0 && (
@@ -120,8 +163,20 @@ export default function Tmux({
                 ))}
               </div>
 
-              <div className="nvim-buf">{children}</div>
+              <VimNav
+                slug={slug}
+                onOpen={open}
+                onClose={() => close(slug)}
+                onPrevTab={prevTab}
+                onNextTab={nextTab}
+                onPosChange={(row, col) => setPos({ row, col })}
+              >
+                {children}
+              </VimNav>
 
+              <div className="nvim-hint">
+                <span>j/k move · h/l char · w/e/b word · gx open · H/L buffer · q close</span>
+              </div>
               <div className="nvim-status">
                 <span>
                   <span className="st-mode">N</span>
@@ -130,7 +185,7 @@ export default function Tmux({
                 </span>
                 <span>
                   <span className="st-ft">   markdown</span>
-                  <span className="st-pos">  1:1</span>
+                  <span className="st-pos">  {pos.row}:{pos.col}</span>
                 </span>
               </div>
             </div>
