@@ -1,3 +1,24 @@
+const hasCloudinaryConfig = [
+  process.env.CLOUDINARY_CLOUD_NAME,
+  process.env.CLOUDINARY_API_KEY,
+  process.env.CLOUDINARY_API_SECRET,
+].every(Boolean)
+
+// When Cloudinary isn't configured (e.g. local development), provide an empty
+// CloudinaryMedia type so the photo queries still validate but return nothing.
+exports.createSchemaCustomization = ({ actions }) => {
+  if (hasCloudinaryConfig) return
+  const { createTypes } = actions
+  createTypes(`
+    type CloudinaryMedia implements Node {
+      public_id: String
+      secure_url: String
+      height: Float
+      width: Float
+    }
+  `)
+}
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 

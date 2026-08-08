@@ -1,5 +1,11 @@
 require('dotenv').config();
 
+const hasCloudinaryConfig = [
+  process.env.CLOUDINARY_CLOUD_NAME,
+  process.env.CLOUDINARY_API_KEY,
+  process.env.CLOUDINARY_API_SECRET,
+].every(Boolean);
+
 module.exports = {
   siteMetadata: {
     title: `Samuel Chen`,
@@ -31,11 +37,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
-        fonts: [
-          {
-            family: `Montserrat`
-          }
-        ]
       },
     },
     // Remark transformer
@@ -52,20 +53,22 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // Cloudinary 
-    {
-      resolve: `gatsby-source-cloudinary`,
-      options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: `image`,
-        prefix: `albums/`,
-        context: true,
-        tags: true,
-        maxResults: 300,
-      }
-    },
+    // Cloudinary is optional for local development and required for photo sync.
+    ...(hasCloudinaryConfig
+      ? [{
+          resolve: `gatsby-source-cloudinary`,
+          options: {
+            cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+            apiKey: process.env.CLOUDINARY_API_KEY,
+            apiSecret: process.env.CLOUDINARY_API_SECRET,
+            resourceType: `image`,
+            prefix: `albums/`,
+            context: true,
+            tags: true,
+            maxResults: 300,
+          },
+        }]
+      : []),
     // {
     //   resolve: 'gatsby-transformer-cloudinary',
     //   options: {
