@@ -26,7 +26,7 @@ export default function Page() {
       <div className="prompt">
         <p className="line">
           <span className="cwd">~/samuelfchen</span>
-          <span className="dir"> portfolio</span>
+          <span className="dir"> main</span>
         </p>
         <p className="line" aria-label={LINE}>
           <span className="arrow">❯</span>
