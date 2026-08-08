@@ -1,9 +1,0 @@
-[
-  {
-    "name": "samuelfchen.com",
-    "description": "Personal website — built with Next.js and Tailwind CSS.",
-    "url": "https://samuelfchen.com",
-    "github": "https://github.com/samuelfchen/samuelfchen",
-    "tech": ["Next.js", "TypeScript", "Tailwind CSS"]
-  }
-]
