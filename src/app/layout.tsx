@@ -1,11 +1,27 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import Tmux from "../components/Tmux";
 import "./globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "../fonts/JetBrainsMonoNerd-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/JetBrainsMonoNerd-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/JetBrainsMonoNerd-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +51,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={jetbrainsMono.variable}>
-      <body>{children}</body>
+      <body>
+        <main>
+          <Tmux>{children}</Tmux>
+
+          <div className="corner left">
+            <a
+              className="v1"
+              data-tooltip="2021 — My first portfolio website, built in GatsbyJS"
+              data-align="left"
+              href="https://v1.samuelfchen.com"
+            >
+              v1
+            </a>
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
