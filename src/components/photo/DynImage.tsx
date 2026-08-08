@@ -1,63 +1,51 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-
-import styled from 'styled-components'
-
-// Note: You can change "images" to whatever you'd like.
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface DynImageProps {
   filename?: string
   alt?: string
 }
 
-interface DynImageData {
+interface DynImageQueryResult {
   images: {
     edges: Array<{
       node: {
-        relativePath: string
+        name: string
         childImageSharp: {
-          fluid: FluidObject
+          gatsbyImageData: IGatsbyImageData
         }
       }
     }>
   }
 }
 
-const Image = (props: DynImageProps) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        images: allFile(
-            filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {eq: "albums/featured"}}
-        ) {
-          edges {
-            node {
-              relativePath
-              name
-              childImageSharp {
-                fluid(maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+const DynImage = ({ filename, alt }: DynImageProps) => {
+  const data = useStaticQuery<DynImageQueryResult>(graphql`
+    query {
+      images: allFile(
+          filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {eq: "albums/featured"}}
+      ) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              gatsbyImageData(aspectRatio: 2.5, layout: FULL_WIDTH, width: 1000)
             }
           }
         }
       }
-    `}
-    render={(data: DynImageData) => {
-      const image = data.images.edges.find(n => {
-        return n.node.relativePath.includes(props.filename || '');
-      });
-      if (!image) {
-        return null;
-      }
+    }
+  `);
 
-      return (
-          <Img alt={props.alt} fluid={{...image.node.childImageSharp.fluid, aspectRatio: 10 / 4}} />
-      );
-    }}
-  />
-);
+  const node = data.images.edges.find(n => n.node.name.includes(filename || ''));
+  const image = node ? getImage(node.node.childImageSharp) : undefined;
 
-export default Image;
+  if (!image) {
+    return null;
+  }
+
+  return <GatsbyImage image={image} alt={alt || ''} />;
+};
+
+export default DynImage;

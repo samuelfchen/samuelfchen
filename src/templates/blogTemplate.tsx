@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from './Layout'
-import Img from "gatsby-image"
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 import BlogPostWrapper from './BlogPost.styles'
 
@@ -19,7 +19,7 @@ interface BlogTemplateProps {
     }
     file: {
       childImageSharp: {
-        fluid: any
+        gatsbyImageData: IGatsbyImageData
       }
     }
   }
@@ -29,7 +29,7 @@ export default function Template({ data }: BlogTemplateProps) {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
 
-  const featuredImgFluid = data.file.childImageSharp.fluid
+  const featuredImg = getImage(data.file.childImageSharp)
   return (
     <Layout limitWidth="true">
       <BlogPostWrapper>
@@ -37,7 +37,7 @@ export default function Template({ data }: BlogTemplateProps) {
           <h1>{frontmatter.title}</h1>
           <h2>{frontmatter.subtitle}</h2>
           <h5>{frontmatter.date}</h5>
-          <Img fluid={featuredImgFluid} alt={frontmatter.title} />
+          {featuredImg && <GatsbyImage image={featuredImg} alt={frontmatter.title} />}
         </div>
 
         <div
@@ -63,9 +63,7 @@ export const pageQuery = graphql`
 
     file (relativePath: { eq: $imgUrl }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 1200)
       }
     }
   }

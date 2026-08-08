@@ -28,7 +28,7 @@ interface AlbumTemplateProps {
               width: number
               height: number
             }
-            fluid: any
+            gatsbyImageData: any
           }
         }
       }>
@@ -84,11 +84,7 @@ export const pageQuery = graphql`
               width
               height
             }
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
-              originalName
-              originalImg
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
