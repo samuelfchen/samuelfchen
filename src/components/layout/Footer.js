@@ -3,8 +3,6 @@ import React from 'react';
 
 import FooterWrapper from '../../styles/layout/FooterStyles'
 
-import LogoSVG from '../../images/logos/SigniatureLogoSVG'
-
 const Footer = () => {
 
   return (

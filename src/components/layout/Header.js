@@ -3,9 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 import HeaderWrapper from '../../styles/layout/HeaderStyles'
 
-import LogoSVG from '../../images/logos/SigniatureLogoSVG'
-
-
 import blogIconURL from '../../images/icons/header/blog.svg'
 import photoIconURL from '../../images/icons/header/photo.svg'
 
@@ -31,8 +28,6 @@ const Header = () => {
       <div className="inner-header">
         <div className="logo">
           <Link to="/" activeClassName="active">
-            {/* <LogoSVG/>
-            <p>samuel chen</p> */}
             sc
           </Link>
         </div>
@@ -41,8 +36,6 @@ const Header = () => {
           <nav className='desktop'>
             <Link to="/photo" activeClassName="active">photography</Link>
             <Link to="/blog" activeClassName="active">blog</Link>
-            {/* <Link to="/projects" activeClassName="active">projects</Link> */}
-            {/* <Link to="/about" activeClassName="active">about</Link> */}
           </nav>
           <nav className='mobile'>
             <Link to="/photo"><img src={photoIconURL} alt='photo'/></Link>

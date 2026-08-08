@@ -1,6 +1,4 @@
-import React, {useEffect, useRef} from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import gsap, {TweenMax, Power3} from 'gsap'
+import React from "react"
 
 import IconBarWrapper from '../../styles/index/IconBarStyles'
 

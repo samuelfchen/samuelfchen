@@ -1,20 +1,8 @@
-import React, { useRef } from "react"
-// import TweenMax from 'gsap'
+import React from "react"
 
 import AnimatedIconWrapper from '../../styles/index/AnimatedIconStyles'
 
-// const showLabel = (label) => {
-//     TweenMax.to(label, 0.4, {autoAlpha: 1, y: 3});
-// }
-
-// const hideLabel = (label) => {
-//     TweenMax.to(label, 0.4, {autoAlpha: 0, y: -3});
-// }
-
 const AnimatedIcon = (props) => {
-
-    let label = useRef(null);
-
     return (
         <AnimatedIconWrapper>
             <a 
