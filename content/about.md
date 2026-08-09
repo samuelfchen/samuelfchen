@@ -10,5 +10,3 @@ Flexible stack, with a frontend focus.
 -> Akuna Capital (2021-2023) 
 -> Airwallex (2023-2025) 
 -> Atlassian (2025-)
-
-## Test update again
