@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Pane from "./Pane";
 import VimNav from "./VimNav";
-import Face from "./panes/Face";
+import Donut from "./panes/Donut";
 import Log from "./panes/Log";
 import type { GitInfo } from "../lib/git";
 
@@ -150,7 +150,7 @@ export default function Tmux({
       <div className="tmx-panes">
         <div className="col-left">
           <Pane>
-            <Face />
+            <Donut />
           </Pane>
           <Pane>
             <Log branch={git.branch} log={git.log} />

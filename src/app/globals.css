@@ -256,6 +256,19 @@ main {
   display: block;
 }
 
+.donut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: var(--fg);
+  font-size: 1rem;
+  line-height: 1.2;
+  user-select: none;
+  overflow: hidden;
+}
+
 /* ── nvim pane ──────────────────────────────────────────────────── */
 
 .nvim {
