@@ -145,6 +145,9 @@ export default function VimNav({
     if (cached) {
       colRef.current = cached.col;
     }
+    return () => {
+      savePos(slug, rowRef.current, colRef.current);
+    };
   }, [slug]);
 
   const position = useCallback(() => {
