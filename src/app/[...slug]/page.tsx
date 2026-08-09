@@ -23,16 +23,28 @@ export async function generateMetadata({
   const content = await getMarkdown(flat);
   const { title, description, date } = getPageMeta(content);
 
+  const isArticle = flat.startsWith("blog/") && !!date;
+
   return {
     title,
     description,
     openGraph: {
       title,
       description,
-      type: date ? "article" : "website",
-      ...(date ? { publishedTime: date } : {}),
+      type: isArticle ? "article" : "website",
+      ...(isArticle
+        ? {
+            publishedTime: date,
+            section: "Blog",
+            authors: ["https://samuelfchen.com"],
+          }
+        : {}),
     },
-    twitter: { title, description },
+    twitter: {
+      card: isArticle ? "summary_large_image" : "summary",
+      title,
+      description,
+    },
     alternates: {
       canonical: `https://samuelfchen.com/${flat}`,
     },
@@ -49,5 +61,36 @@ export default async function Page({
   const files = await getSlugs();
   if (!files.includes(flat)) notFound();
   const content = await getMarkdown(flat);
-  return <MarkdownViewer content={content} files={files} />;
+  const { title, description, date } = getPageMeta(content);
+
+  return (
+    <>
+      {flat.startsWith("blog/") && date && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: title,
+              description,
+              datePublished: date,
+              author: {
+                "@type": "Person",
+                name: "Samuel Chen",
+                url: "https://samuelfchen.com",
+              },
+              publisher: {
+                "@type": "Person",
+                name: "Samuel Chen",
+                url: "https://samuelfchen.com",
+              },
+              url: `https://samuelfchen.com/${flat}`,
+            }),
+          }}
+        />
+      )}
+      <MarkdownViewer content={content} files={files} />
+    </>
+  );
 }

@@ -92,6 +92,10 @@ export default async function RootLayout({
                 "@type": "Organization",
                 name: "Atlassian",
               },
+              sameAs: [
+                "https://github.com/samuelfchen",
+                "https://linkedin.com/in/samuelfchen",
+              ],
               knowsAbout: [
                 "Frontend Development",
                 "Full Stack Engineering",
