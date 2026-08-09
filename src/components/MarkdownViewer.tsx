@@ -65,13 +65,17 @@ function inlineToken(m: RegExpMatchArray, files: string[]): ReactNode {
     const rest = t.slice(close + 2, -1);
     const url = rest.split(/\s+/)[0];
     const to = resolveInternal(url, files);
-    return to ? (
-      <Link href={to}>{label}</Link>
-    ) : (
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        {label}
-      </a>
-    );
+    if (to) return <Link href={to}>{label}</Link>;
+    const external = /^https?:\/\//.test(url);
+    if (external) {
+      return (
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      );
+    }
+    const cleaned = url.replace(/^\.\//, "").replace(/\.md$/, "").replace(/^\//, "");
+    return <Link href={`/${cleaned}`}>{label}</Link>;
   }
   if (t.startsWith("~~")) {
     return (

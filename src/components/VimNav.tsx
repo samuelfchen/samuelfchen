@@ -10,6 +10,23 @@ import {
 } from "react";
 
 const ROW_SELECTOR = ".md-row";
+const STORAGE_KEY = "nvim-pos";
+
+function loadPos(): Record<string, { row: number; col: number }> {
+  try {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function savePos(slug: string, row: number, col: number) {
+  try {
+    const all = loadPos();
+    all[slug] = { row, col };
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+  } catch {}
+}
 
 function lineOf(el: HTMLElement) {
   const before = getComputedStyle(el, "::before").content;
@@ -113,19 +130,22 @@ export default function VimNav({
     () => hoverQuery?.matches ?? false,
     () => false
   );
-  const [row, setRow] = useState(0);
-  const [prevSlug, setPrevSlug] = useState(slug);
+  const [row, setRow] = useState(() => {
+    const cached = loadPos()[slug];
+    return cached?.row ?? 0;
+  });
   const rowsRef = useRef<HTMLElement[]>([]);
-  const rowRef = useRef(0);
+  const rowRef = useRef(row);
   const colRef = useRef(0);
-  const prevSlugRef = useRef(slug);
   const gRef = useRef(false);
   const gTimer = useRef(0);
 
-  if (prevSlug !== slug) {
-    setPrevSlug(slug);
-    setRow(0);
-  }
+  useEffect(() => {
+    const cached = loadPos()[slug];
+    if (cached) {
+      colRef.current = cached.col;
+    }
+  }, [slug]);
 
   const position = useCallback(() => {
     const host = hostRef.current;
@@ -246,6 +266,7 @@ export default function VimNav({
       if (!a) a = el?.querySelector<HTMLAnchorElement>("a[href]");
       const href = a?.getAttribute("href");
       if (!href) return;
+      savePos(slug, rowRef.current, colRef.current);
       if (href.startsWith("/")) onOpen(href.replace(/^\//, ""));
       else window.open(href, "_blank", "noopener");
     };
@@ -342,16 +363,12 @@ export default function VimNav({
       window.removeEventListener("keydown", onKey);
       clearTimeout(gTimer.current);
     };
-  }, [enabled, onClose, onOpen, onPrevTab, onNextTab, position]);
+  }, [enabled, slug, onClose, onOpen, onPrevTab, onNextTab, position]);
 
   useEffect(() => {
     const host = hostRef.current;
     const cursor = cursorRef.current;
     if (!host || !cursor || !enabled) return;
-    if (prevSlugRef.current !== slug) {
-      prevSlugRef.current = slug;
-      colRef.current = 0;
-    }
     const rows = Array.from(
       host.querySelectorAll<HTMLElement>(ROW_SELECTOR)
     ).filter((el) => el.offsetParent !== null);
@@ -380,6 +397,7 @@ export default function VimNav({
   const onMouseDown = (e: React.MouseEvent) => {
     const host = hostRef.current;
     if (!host || !enabled) return;
+    savePos(slug, rowRef.current, colRef.current);
     host.focus();
     const target = e.target as Element;
     const rowEl = target.closest<HTMLElement>(ROW_SELECTOR);
@@ -388,7 +406,13 @@ export default function VimNav({
     if (idx >= 0) {
       setRow(idx);
       rowRef.current = idx;
-      colRef.current = 0;
+      const rowRect = rowEl.getBoundingClientRect();
+      const cs = getComputedStyle(rowEl);
+      const padL = parseFloat(cs.paddingLeft) || 0;
+      const hitX = e.clientX - rowRect.left - padL;
+      const cursor = cursorRef.current;
+      const cw = cursor?.getBoundingClientRect().width || 7.2;
+      colRef.current = Math.max(0, Math.round(hitX / cw));
       position();
     }
   };

@@ -5,28 +5,36 @@ import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const slugs = await getSlugs();
-  return slugs.filter((s) => s !== "index").map((slug) => ({ slug }));
+  return slugs
+    .filter((s) => s !== "index")
+    .map((slug) => ({ slug: slug.split("/") }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const flat = slug.join("/");
   const files = await getSlugs();
-  if (!files.includes(slug)) return {};
+  if (!files.includes(flat)) return {};
 
-  const content = await getMarkdown(slug);
-  const { title, description } = getPageMeta(content);
+  const content = await getMarkdown(flat);
+  const { title, description, date } = getPageMeta(content);
 
   return {
     title,
     description,
-    openGraph: { title, description },
+    openGraph: {
+      title,
+      description,
+      type: date ? "article" : "website",
+      ...(date ? { publishedTime: date } : {}),
+    },
     twitter: { title, description },
     alternates: {
-      canonical: `https://samuelfchen.com/${slug}`,
+      canonical: `https://samuelfchen.com/${flat}`,
     },
   };
 }
@@ -34,11 +42,12 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
+  const flat = slug.join("/");
   const files = await getSlugs();
-  if (!files.includes(slug)) notFound();
-  const content = await getMarkdown(slug);
+  if (!files.includes(flat)) notFound();
+  const content = await getMarkdown(flat);
   return <MarkdownViewer content={content} files={files} />;
 }

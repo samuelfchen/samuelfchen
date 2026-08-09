@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-seo.cjs && next build",
+    "build": "node scripts/generate-seo.cjs && node scripts/generate-blog-listing.cjs && next build",
     "start": "next start",
     "lint": "eslint",
     "deploy": "node scripts/generate-seo.cjs && next build && wrangler pages deploy out --project-name samuelfchen",

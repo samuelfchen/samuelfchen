@@ -6,5 +6,4 @@ Currently working at Atlassian. [now.md](/now.md)
 ## links
 - [about.md](/about.md)
 - [blog.md](/blog.md)
-- [photo.md](/photo.md)
 - [projects.md](/projects.md)

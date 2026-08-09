@@ -1,3 +1,3 @@
 # blog
 
-Notes and writing in progress. Nothing here yet — check back soon.
+[First blog post](./blog/test) — 2026-08-09
