@@ -1,12 +1,12 @@
-type Commit = { hash: string; refs: string; subject: string };
+type Commit = { hash: string; refs: string; subject: string; date: string };
 
 function parseLog(log: string): Commit[] {
   return log
     .split("\n")
     .filter(Boolean)
     .map((line) => {
-      const [hash = "", refs = "", subject = ""] = line.split("\x1f");
-      return { hash, refs, subject };
+      const [hash = "", refs = "", subject = "", date = ""] = line.split("\x1f");
+      return { hash, refs, subject, date };
     });
 }
 
@@ -35,6 +35,7 @@ export default function Log({
           <span className="meta">{c.hash}</span>
           {c.refs && <span className="ref"> {c.refs}</span>}
           <span className="msg"> {c.subject}</span>
+          <span className="log-date"> ({c.date})</span>
         </div>
       ))}
       <div className="blink">▋</div>

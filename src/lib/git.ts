@@ -8,7 +8,7 @@ export function getGitInfo(max = 10): GitInfo {
   try {
     branch = execSync("git branch --show-current").toString().trim();
     log = execSync(
-      `git log -n ${max} --pretty=format:%h%x1f%d%x1f%s`
+      `git log -n ${max} --pretty=format:%h%x1f%d%x1f%s%x1f%ar`
     ).toString().trimEnd();
   } catch {
     // not a git repo — keep placeholders

@@ -28,8 +28,8 @@ const jetbrainsMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://samuelfchen.com"),
   title: {
-    template: "%s | Samuel Chen",
-    default: "Samuel Chen — Software Engineer, Sydney",
+    template: "%s | samuelfchen",
+    default: "samuelfchen",
   },
   description:
     "Portfolio of Samuel Chen, software engineer based in Sydney. Experience at Atlassian, Airwallex, Akuna Capital. Frontend-focused full-stack developer.",
