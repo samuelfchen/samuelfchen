@@ -209,7 +209,7 @@ export default function Tmux({
               </VimNav>
 
               <div className="nvim-hint">
-                <span>j/k move · h/l char · w/e/b word · gx open · H/L buffer · q close</span>
+                <span>j/k move · h/l char · w/e/b word · enter open link · H/L buffer · x close</span>
               </div>
               <div className="nvim-status">
                 <span>

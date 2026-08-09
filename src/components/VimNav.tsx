@@ -326,9 +326,13 @@ export default function VimNav({
           e.preventDefault();
           go(Number.MAX_SAFE_INTEGER);
           break;
-        case "q":
+        case "x":
           e.preventDefault();
           onClose();
+          break;
+        case "Enter":
+          e.preventDefault();
+          follow();
           break;
       }
     };
