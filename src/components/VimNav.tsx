@@ -25,27 +25,32 @@ function nextWordStart(line: string, from: number): number {
   const n = line.length;
   let p = from;
   if (p >= n) return n;
-  if (/\S/.test(line[p])) {
-    while (p < n && /\S/.test(line[p])) p++;
-  }
+  while (p < n && /\S/.test(line[p])) p++;
   while (p < n && /\s/.test(line[p])) p++;
   return p;
 }
 
 function nextWordEnd(line: string, from: number): number {
   const n = line.length;
+  if (n === 0) return 0;
   if (from >= n - 1) return n - 1;
   let p = from;
-  while (p < n && /\S/.test(line[p])) p++;
-  while (p < n && /\s/.test(line[p])) p++;
-  while (p < n - 1 && /\S/.test(line[p + 1])) p++;
+  if (p + 1 < n && /\S/.test(line[p + 1])) {
+    while (p + 1 < n && /\S/.test(line[p + 1])) p++;
+  } else {
+    while (p + 1 < n && /\s/.test(line[p + 1])) p++;
+    while (p + 1 < n && /\S/.test(line[p + 1])) p++;
+  }
   return p;
 }
 
 function prevWordStart(line: string, from: number): number {
   let p = from;
   while (p > 0 && /\s/.test(line[p - 1])) p--;
-  while (p > 0 && /\S/.test(line[p - 1])) p--;
+  const atWordStart = p === 0 || /\s/.test(line[p - 1]);
+  if (!atWordStart) {
+    while (p > 0 && /\S/.test(line[p - 1])) p--;
+  }
   return p;
 }
 
