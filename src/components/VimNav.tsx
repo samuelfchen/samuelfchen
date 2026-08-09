@@ -203,9 +203,42 @@ export default function VimNav({
       position();
     };
 
+    const linkAtCol = (el: Element, col: number): HTMLAnchorElement | null => {
+      let pos = 0;
+      const walk = (node: Node): HTMLAnchorElement | null => {
+        if (node.nodeType === 3) {
+          const len = node.textContent?.length ?? 0;
+          pos += len;
+          if (col < pos) return null;
+        } else if (node.nodeType === 1) {
+          const e = node as HTMLElement;
+          const start = pos;
+          if (e.tagName === "A" && e.getAttribute("href")) {
+            const len = e.textContent?.length ?? 0;
+            if (col >= start && col < start + len) {
+              return e as HTMLAnchorElement;
+            }
+            pos += len;
+          } else {
+            for (let i = 0; i < e.childNodes.length; i++) {
+              const r = walk(e.childNodes[i]);
+              if (r) return r;
+            }
+          }
+        }
+        return null;
+      };
+      for (let i = 0; i < el.childNodes.length; i++) {
+        const r = walk(el.childNodes[i]);
+        if (r) return r;
+      }
+      return null;
+    };
+
     const follow = () => {
       const el = rowsRef.current[rowRef.current];
-      const a = el?.querySelector<HTMLAnchorElement>("a[href]");
+      let a = el ? linkAtCol(el, colRef.current) : null;
+      if (!a) a = el?.querySelector<HTMLAnchorElement>("a[href]");
       const href = a?.getAttribute("href");
       if (!href) return;
       if (href.startsWith("/")) onOpen(href.replace(/^\//, ""));

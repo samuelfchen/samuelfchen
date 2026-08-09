@@ -82,6 +82,10 @@ main {
   text-decoration: none;
 }
 
+.tmx-email .tmx-label [role="button"] {
+  cursor: copy;
+}
+
 .tmx-win.active {
   color: var(--bg);
   background: var(--orange);
@@ -102,6 +106,19 @@ main {
   display: none;
 }
 
+.tmx-copy-icon {
+  color: var(--dim);
+  cursor: copy;
+}
+
+.tmx-copy-icon.copied {
+  color: var(--green);
+}
+
+.tmx-short {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .tmx-host {
     display: none;
@@ -113,8 +130,9 @@ main {
     display: none;
   }
 
-  .tmx-icon {
+  .tmx-short {
     display: inline;
+    color: var(--dim);
   }
 }
 

@@ -8,10 +8,11 @@ import Face from "./panes/Face";
 import Log from "./panes/Log";
 import type { GitInfo } from "../lib/git";
 
+const EMAIL = "[EMAIL]";
+
 const LINKS = [
-  { name: "github", icon: "\uf09b", href: "https://github.com/samuelfchen" },
-  { name: "linkedin", icon: "\uf08c", href: "https://linkedin.com/in/samuelfchen" },
-  { name: "email", icon: "\uf0e0", href: "mailto:hi@samuelfchen.com" },
+  { name: "github", icon: "\uf09b", short: "gh", href: "https://github.com/samuelfchen" },
+  { name: "linkedin", icon: "\uf08c", short: "in", href: "https://linkedin.com/in/samuelfchen" },
 ];
 
 function slugOf(pathname: string): string {
@@ -32,7 +33,16 @@ export default function Tmux({
   const [tabs, setTabs] = useState<string[]>(["index"]);
   const [prevSlug, setPrevSlug] = useState<string | null>(null);
   const [pos, setPos] = useState({ row: 1, col: 1 });
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const tabsRef = useRef<HTMLDivElement | null>(null);
+
+  const handleCopy = () => {
+    void navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    clearTimeout(copyTimer.current);
+    copyTimer.current = setTimeout(() => setCopied(false), 1500);
+  };
 
   if (prevSlug !== slug) {
     setPrevSlug(slug);
@@ -107,8 +117,40 @@ export default function Tmux({
               <span className="tmx-icon" aria-hidden="true">
                 {l.icon}
               </span>
+              <span className="tmx-short">{l.short}</span>
             </a>
           ))}
+          <span className="tmx-win tmx-email">
+            <span className="tmx-label">
+              3:
+              <span
+                className={`tmx-copy-icon${copied ? " copied" : ""}`}
+                aria-hidden="true"
+                onClick={handleCopy}
+              >
+                {copied ? "\uf00c" : "\uf0c5"}
+              </span>
+              <span
+                role="button"
+                tabIndex={0}
+                aria-label="Copy email to clipboard"
+                onClick={handleCopy}
+                onKeyDown={(e) => { if (e.key === "Enter") handleCopy(); }}
+              >
+                {" "}email
+              </span>
+            </span>
+            <span
+              className="tmx-short"
+              role="button"
+              tabIndex={0}
+              aria-label="Copy email to clipboard"
+              onClick={handleCopy}
+              onKeyDown={(e) => { if (e.key === "Enter") handleCopy(); }}
+            >
+              {copied ? "done" : "[copy]"}
+            </span>
+          </span>
         </div>
         <span className="tmx-host">macbook-m1-pro</span>
       </div>
