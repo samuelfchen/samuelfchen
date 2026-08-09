@@ -397,7 +397,6 @@ export default function VimNav({
   const onMouseDown = (e: React.MouseEvent) => {
     const host = hostRef.current;
     if (!host || !enabled) return;
-    savePos(slug, rowRef.current, colRef.current);
     host.focus();
     const target = e.target as Element;
     const rowEl = target.closest<HTMLElement>(ROW_SELECTOR);
@@ -412,9 +411,10 @@ export default function VimNav({
       const hitX = e.clientX - rowRect.left - padL;
       const cursor = cursorRef.current;
       const cw = cursor?.getBoundingClientRect().width || 7.2;
-      colRef.current = Math.max(0, Math.round(hitX / cw));
+      colRef.current = Math.max(0, Math.floor(hitX / cw));
       position();
     }
+    savePos(slug, rowRef.current, colRef.current);
   };
 
   return (
