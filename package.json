@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-seo.cjs && next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "npm run build && wrangler pages deploy out --project-name samuelfchen",
-    "deploy:dev": "npm run build && wrangler pages deploy out --project-name samuelfchen-dev"
+    "deploy": "node scripts/generate-seo.cjs && next build && wrangler pages deploy out --project-name samuelfchen",
+    "deploy:dev": "node scripts/generate-seo.cjs && next build && wrangler pages deploy out --project-name samuelfchen-dev"
   },
   "dependencies": {
     "next": "16.2.9",

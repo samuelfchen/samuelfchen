@@ -26,19 +26,41 @@ const jetbrainsMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "samuelfchen",
-  description: "portfolio — work in progress",
+  metadataBase: new URL("https://samuelfchen.com"),
+  title: {
+    template: "%s | Samuel Chen",
+    default: "Samuel Chen — Software Engineer, Sydney",
+  },
+  description:
+    "Portfolio of Samuel Chen, software engineer based in Sydney. Experience at Atlassian, Airwallex, Akuna Capital. Frontend-focused full-stack developer.",
+  keywords: [
+    "Samuel Chen",
+    "samuelfchen",
+    "software engineer",
+    "frontend developer",
+    "full stack",
+    "Atlassian",
+    "Sydney",
+    "portfolio",
+  ],
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "samuelfchen",
-    description: "portfolio — work in progress",
+    title: "Samuel Chen — Software Engineer",
+    description:
+      "Portfolio of Samuel Chen, software engineer based in Sydney. Experience at Atlassian, Airwallex, Akuna Capital.",
     url: "https://samuelfchen.com",
-    siteName: "samuelfchen",
+    siteName: "Samuel Chen",
+    locale: "en_AU",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "samuelfchen",
-    description: "portfolio — work in progress",
+    title: "Samuel Chen — Software Engineer",
+    description:
+      "Portfolio of Samuel Chen, software engineer based in Sydney. Experience at Atlassian, Airwallex, Akuna Capital.",
+  },
+  alternates: {
+    canonical: "https://samuelfchen.com",
   },
   icons: {
     icon: "/favicon.svg",
@@ -55,6 +77,30 @@ export default async function RootLayout({
   return (
     <html lang="en" className={jetbrainsMono.variable}>
       <body style={{ backgroundColor: "#282c34" }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Samuel Chen",
+              givenName: "Samuel",
+              familyName: "Chen",
+              url: "https://samuelfchen.com",
+              jobTitle: "Software Engineer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Atlassian",
+              },
+              knowsAbout: [
+                "Frontend Development",
+                "Full Stack Engineering",
+                "React",
+                "TypeScript",
+              ],
+            }),
+          }}
+        />
         <main>
           <Tmux git={git}>{children}</Tmux>
 
