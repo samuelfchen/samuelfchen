@@ -185,6 +185,7 @@ export default function VimNav({
       setRow(next);
       rowRef.current = next;
       rows[next].scrollIntoView({ block: "nearest" });
+      position();
     };
 
     const wordMove = (dir: "w" | "e" | "b") => {

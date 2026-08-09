@@ -198,6 +198,7 @@ export default function Tmux({
               </div>
 
               <VimNav
+                key={slug}
                 slug={slug}
                 onOpen={open}
                 onClose={() => close(slug)}
