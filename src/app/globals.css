@@ -106,15 +106,6 @@ main {
   display: none;
 }
 
-.tmx-copy-icon {
-  color: var(--dim);
-  cursor: copy;
-}
-
-.tmx-copy-icon.copied {
-  color: var(--green);
-}
-
 .tmx-short {
   display: none;
 }

@@ -122,14 +122,6 @@ export default function Tmux({
           ))}
           <span className="tmx-win tmx-email">
             <span className="tmx-label">
-              3:
-              <span
-                className={`tmx-copy-icon${copied ? " copied" : ""}`}
-                aria-hidden="true"
-                onClick={handleCopy}
-              >
-                {copied ? "\uf00c" : "\uf0c5"}
-              </span>
               <span
                 role="button"
                 tabIndex={0}
@@ -137,7 +129,7 @@ export default function Tmux({
                 onClick={handleCopy}
                 onKeyDown={(e) => { if (e.key === "Enter") handleCopy(); }}
               >
-                {" "}email
+                {copied ? "copied!" : "3:email"}
               </span>
             </span>
             <span
